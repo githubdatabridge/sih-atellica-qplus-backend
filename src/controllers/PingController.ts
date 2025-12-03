@@ -1,0 +1,59 @@
+import { get, controller, options } from 'hapi-decorators';
+
+import { BaseController } from './BaseController';
+import { Request } from '@hapi/hapi';
+import { autoInjectable } from 'tsyringe';
+import { PongService } from '../services';
+
+import * as PingValidator from '../validators/PingValidator';
+import * as Errors from '../lib/errors';
+import Joi = require('joi');
+import { headerValidator } from '../validators/HeaderValidator';
+import { QlikStrategies } from '../lib/strategies';
+
+@autoInjectable()
+@controller('/ping')
+export class PingController extends BaseController {
+    constructor(private pongService?: PongService) {
+        super();
+    }
+
+    @options({
+        description: 'Ping the service',
+        tags: ['api', 'ping'],
+        response: {
+            schema: PingValidator.response,
+        },
+        plugins: {
+            'hapi-swagger': {
+                responses: {
+                    200: {
+                        description: 'Success',
+                    },
+                    400: {
+                        description: 'Bad request',
+                    },
+                    401: {
+                        description: 'Unauthorized',
+                    },
+                    404: {
+                        description: 'Resource not found',
+                    },
+                    409: {
+                        description: 'Resource already exists',
+                    },
+                    412: {
+                        description: 'Precondition Failed',
+                    },
+                },
+            },
+        },
+    })
+    @get('/')
+    @Errors.handleError
+    ping(request: Request) {
+        return {
+            ping: this.pongService.pong(),
+        };
+    }
+}

@@ -1,0 +1,110 @@
+
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+  - main
+# no PR triggers
+pr: none
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+    # Container registry service connection established during pipeline creation
+    dockerRegistryServiceConnection: 'Qplus Registry Sponsorship'
+    imageRepository: 'sih-atellica-qplus-backend-image'
+    containerRegistry: 'dbcreg.azurecr.io'
+    dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile.azure'
+    tag: '$(Build.BuildId)'
+    vmImageName: 'ubuntu-latest'
+
+
+stages:
+    - stage: CalculateSemVer
+      displayName: Calculate SemVer
+      jobs:
+          - job: Calculate
+            displayName: Calculate
+            pool:
+                vmImage: $(vmImageName)
+            steps:
+            - checkout: self
+              fetchDepth: 0
+            - task: gitversion/setup@0
+              displayName: "Install GitTools"
+              inputs:
+                versionSpec: "5.10.x"
+
+            - task: gitversion/execute@0
+              displayName: "Calculate SemVer"
+            
+            - script: |
+                echo current version is $(GitVersion.SemVer)
+                # Export mmp_ver value
+                echo "##vso[task.setvariable variable=mmp_ver;isOutput=true]$(GitVersion.MajorMinorPatch)"
+              displayName: "Display calculated version"
+              name: SetSemVer
+    - stage: Build
+      displayName: Build and push stage
+      variables:
+      - name: mmp_ver
+        value: $[ stageDependencies.CalculateSemVer.Calculate.outputs['SetSemVer.mmp_ver'] ]
+      jobs:
+          - job: Build
+            displayName: Build
+            pool:
+                vmImage: $(vmImageName)
+            steps:
+                - task: Docker@2
+                  displayName: Build docker image
+                  inputs:
+                      command: 'build'
+                      dockerfile: $(dockerFilePath)
+                      repository: $(imageRepository)
+                      containerRegistry: $(dockerRegistryServiceConnection)
+                      tags: |
+                          $(tag)
+                          $(mmp_ver)
+                - task: Docker@2
+                  displayName: Push an image to container registry
+                  inputs:
+                      command: 'push'
+                      repository: $(imageRepository)
+                      containerRegistry: $(dockerRegistryServiceConnection)
+                      tags: |
+                          $(tag)
+                          $(mmp_ver)
+                - script: |
+                    echo current version is $(mmp_ver)
+                    # Export mmp_ver value
+                    echo "##vso[task.setvariable variable=mmp_ver;isOutput=true]$(mmp_ver)"
+                  displayName: "Display calculated version"
+                  name: SetSemVer
+    - stage: TagAndRelease
+      dependsOn: Build
+      displayName: Tag And Release
+      variables:
+      - name: mmp_ver
+        value: $[ stageDependencies.Build.Build.outputs['SetSemVer.mmp_ver'] ]
+      jobs:
+          - job: TagAndRelease
+            displayName: Tag And Release
+            pool:
+                vmImage: $(vmImageName)
+            steps:
+                - task: GitHubRelease@1
+                  inputs:
+                    gitHubConnection: 'github.com_githubdatabridge'
+                    repositoryName: 'githubdatabridge/sih-atellica-qplus-backend'
+                    action: 'create'
+                    target: '$(Build.SourceVersion)'
+                    tagSource: 'userSpecifiedTag'
+                    tag: 'v$(mmp_ver)'
+                    isDraft: true
+                    changeLogCompareToRelease: 'lastFullRelease'
+                    changeLogType: 'commitBased'
+
+
+

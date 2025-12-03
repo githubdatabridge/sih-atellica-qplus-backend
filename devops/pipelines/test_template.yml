@@ -1,0 +1,46 @@
+parameters:
+  param : []
+
+steps:
+  - ${{each filename in parameters.param}}:
+    - task: Bash@3
+      displayName: Echo test file
+      inputs:
+        targetType: 'inline'
+        script: |
+          echo ${{ filename  }}
+    - task: DockerCompose@0
+      displayName: RUN Docker Compose
+      inputs:
+        containerregistrytype: 'Azure Container Registry'
+        azureSubscription: 'U-BTech - CSP (DataBridge) (f1f79bd1-5d70-409d-82a7-1f202504dcba)'
+        azureContainerRegistry: 'dbcreg.azurecr.io'
+        dockerComposeFile: '**/docker-compose-test.yml'
+        dockerComposeFileArgs: |
+          POSTMAN_FILE_NAME=${{ filename  }}
+          POSTMAN_FILE_OUTPUT=${{ filename  }}     
+          APP_API_IMAGE=app-api-image:test
+          MIG_IMAGE=migrations-image:test
+        qualifyImageNames: false
+        action: 'Run a Docker Compose command'
+        dockerComposeCommand: 'up  --exit-code-from sih-atellica-qplus-backend-test'
+    - task: PublishTestResults@2
+      inputs:
+        testResultsFormat: 'JUnit'
+        testResultsFiles: 'tests/Results/${{ filename  }}.xml'
+        searchFolder: '$(Build.SourcesDirectory)'
+        failTaskOnFailedTests: true
+        testRunTitle: ${{ filename  }}
+        
+    # - task: DockerCompose@0
+    #   displayName: CLEAN Docker Compose
+    #   inputs:
+    #     containerregistrytype: 'Azure Container Registry'
+    #     azureSubscription: 'U-BTech - CSP (DataBridge) (f1f79bd1-5d70-409d-82a7-1f202504dcba)'
+    #     azureContainerRegistry: 'dbcreg.azurecr.io'
+    #     dockerComposeFile: '**/docker-compose-test.yml'
+    #     action: 'Run a Docker Compose command'
+    #     dockerComposeCommand: 'rm --all'
+
+        # APP_API_IMAGE=dbcreg.azurecr.io/sih-atellica-qplus-backend-image:1.0.0-beta.3
+        # MIG_IMAGE=dbcreg.azurecr.io/db-insight-migrations-image:1.0.0-beta.1

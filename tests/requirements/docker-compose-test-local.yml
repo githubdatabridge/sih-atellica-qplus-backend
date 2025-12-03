@@ -1,0 +1,109 @@
+version: '3.8'
+services:
+    qplus-app-api:
+        build:
+            context: '../../.'
+            dockerfile: 'Dockerfile'
+        environment:
+            - 'DB_HOST=qplus-db'
+            - 'DB_DATABASE=test_db'
+            - 'QLIK_SERVICE_HOST=http://sih-atellica-qlik-service-mock'
+            - 'QLIK_SERVICE_PORT=8080'
+            - 'TENANT_FILE_PATH=./'
+        restart: on-failure:5
+        healthcheck:
+            test: apk --no-cache add curl &&
+                curl -f http://localhost:8080/documentation ||
+                exit 1
+            timeout: 3s
+            interval: 6s
+            retries: 3
+            start_period: 30s
+        depends_on:
+            sih-atellica-qlik-service-mock:
+                condition: service_healthy
+
+    qplus-db:
+        image: postgres:12.8
+        ports:
+            - '4432:5432'
+        environment:
+            POSTGRES_USER: root
+            POSTGRES_PASSWORD: root
+            POSTGRES_DB: test_db
+            POSTGRES_HOST_AUTH_METHOD: trust
+
+    qplus-app-api-test:
+        image: alpine
+        volumes:
+            - '../:/usr/src/app/test'
+
+        environment:
+            - POSTMAN_FILE_NAME=${POSTMAN_FILE_NAME}
+            - POSTMAN_FILE_OUTPUT=${POSTMAN_FILE_NAME}.RESULT
+        entrypoint: ['/bin/sh', '-c']
+        command:
+            - |
+                set -e
+                apk update ;
+
+                apk add --update nodejs npm;
+                apk add --update npm;
+
+                cd /usr/src/app/
+                echo "USING for test $$POSTMAN_FILE_NAME"
+                echo "===PRINTING ls test/==="
+                pwd
+                ls test/
+                echo "===END PRINTING==="
+
+                npm install -g newman newman-reporter-htmlextra ;
+
+                newman run test/$$POSTMAN_FILE_NAME \
+                --env-var sessionId_user1=user1 \
+                --env-var sessionId_user2=user2 \
+                --env-var sessionId_admin=admin \
+                --env-var baseUrl=http://qplus-app-api:8080 \
+                --env-var x-vp=localhost \
+                --env-var x-app-name=insight_poc \
+                --env-var x-tenant-id=SIHPOCWEB \
+                --env-var x-customer-id=SIH \
+                --reporters cli,junit,htmlextra \
+                --reporter-junit-export /usr/src/app/test/Results/$$POSTMAN_FILE_OUTPUT.xml \
+                --reporter-htmlextra-export /usr/src/app/test/Results/$$POSTMAN_FILE_OUTPUT.html \
+                --delay-request 1000
+
+        depends_on:
+            qplus-app-api:
+                condition: service_healthy
+            sih-atellica-qlik-service-mock:
+                condition: service_healthy
+
+    sih-atellica-qlik-service-mock:
+        image: node:14-alpine
+        volumes:
+            - './:/usr/src/app/test'
+        environment:
+            - 'HOST=0.0.0.0'
+            - 'PORT=8080'
+
+        entrypoint: ['/bin/sh', '-c']
+        healthcheck:
+            test: apk --no-cache add curl &&
+                curl -X POST -f http://localhost:8080/user/user ||
+                exit 1
+            timeout: 3s
+            interval: 6s
+            retries: 3
+            start_period: 30s
+        command:
+            - |
+                apk update ;
+                apk add --update nodejs npm;
+                apk add --update npm;
+
+                cd /usr/src/app/
+
+                npm install @hapi/hapi ;
+
+                node ./test/sih-atellica-qlik-service-mock.js

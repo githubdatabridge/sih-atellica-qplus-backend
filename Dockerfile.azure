@@ -1,0 +1,13 @@
+FROM node:14-alpine
+ARG DEVOPS_TOKEN
+WORKDIR /usr/src/app
+COPY package*.json ./
+RUN npm install
+RUN npm install -g typescript ts-node ts-lint
+COPY src/ /usr/src/app/src/
+COPY src/certificates /usr/src/app/build/certificates
+COPY ./tsconfig.json .
+RUN npm run build
+
+EXPOSE 8080
+CMD [ "node", "build/index.js" ]

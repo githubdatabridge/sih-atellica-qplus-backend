@@ -1,0 +1,52 @@
+{
+  "apps": {
+    "compliance": "ece91d50-9e52-460c-8d50-8d6abf6442d3",
+    "audit": "dc31bbe0-c11e-4d73-9188-5fba3813c4a5"
+  },
+  "datasets": [
+    {
+      "id": 3,
+      "appUserId": "ceec306d-f313-4691-b3ad-7b8689f6e10c",
+      "qlikAppId": "ece91d50-9e52-460c-8d50-8d6abf6442d3",
+      "title": "test ds",
+      "description": null,
+      "label": null,
+      "type": null,
+      "tags": "[]",
+      "color": null,
+      "createdAt": "2024-02-09T15:40:11.238Z",
+      "updatedAt": "2024-02-09T15:40:11.238Z",
+      "deletedAt": null,
+      "dimensions": "[{\"qId\":\"5f7f88f5-27da-4a04-8f4f-9fe340e563dd\"},{\"qId\":\"ebad8501-0c41-4eaa-8205-55f3ca6e2f3a\"},{\"qId\":\"4fb67b31-15d9-4f84-b07b-95ba101811d4\"},{\"qId\":\"pmPnW\"},{\"qId\":\"2f14cdd1-96fe-4169-9dc0-36bbc7f9cf60\"},{\"qId\":\"a6c02c83-f5c3-407a-b9b5-9bb3ca72e2ec\"},{\"qId\":\"08c74831-441f-4d19-985c-801c22802ffe\"}]",
+      "measures": "[{\"qId\":\"d45f14f5-4890-4b13-878a-b8d03852a76d\"},{\"qId\":\"b1a367f7-02fd-4ea0-89a8-b89f774d6174\"},{\"qId\":\"96b68d67-24bb-4800-95f8-3bca53bd823a\"},{\"qId\":\"2e90da29-cf93-4e8c-9f3f-0d3960ec589f\"},{\"qId\":\"31e8711a-5bf5-42fd-a40d-38d5310b9a82\"}]",
+      "filters": "[{\"qId\":\"ebad8501-0c41-4eaa-8205-55f3ca6e2f3a\"},{\"qId\":\"pmPnW\"},{\"qId\":\"a6c02c83-f5c3-407a-b9b5-9bb3ca72e2ec\"},{\"qId\":\"08c74831-441f-4d19-985c-801c22802ffe\"}]",
+      "customerId": "SIH",
+      "tenantId": "SIHPOCWEB",
+      "appId": "qplus_poc",
+      "visualizations": "[{\"name\":\"table\",\"isBaseChart\":true,\"properties\":{}},{\"name\":\"pivot-table\",\"isBaseChart\":true,\"properties\":{}},{\"name\":\"barchart\",\"isBaseChart\":true,\"properties\":{}},{\"name\":\"piechart\",\"isBaseChart\":true,\"properties\":{}},{\"name\":\"linechart\",\"isBaseChart\":true,\"properties\":{}},{\"name\":\"kpi\",\"isBaseChart\":true,\"properties\":{}},{\"name\":\"treemap\",\"isBaseChart\":true,\"properties\":{}}]",
+      "reports": [
+        {
+          "id": 33,
+          "deletedAt": null,
+          "createdAt": "2024-04-15T12:44:13.694Z",
+          "updatedAt": "2024-04-15T12:44:13.698Z",
+          "content": "{\"dimensions\":[\"ebad8501-0c41-4eaa-8205-55f3ca6e2f3a\",\"a6c02c83-f5c3-407a-b9b5-9bb3ca72e2ec\"],\"measures\":[\"2e90da29-cf93-4e8c-9f3f-0d3960ec589f\",\"31e8711a-5bf5-42fd-a40d-38d5310b9a82\"],\"options\":{},\"filters\":[\"ebad8501-0c41-4eaa-8205-55f3ca6e2f3a\",\"pmPnW\",\"a6c02c83-f5c3-407a-b9b5-9bb3ca72e2ec\",\"08c74831-441f-4d19-985c-801c22802ffe\"]}",
+          "description": null,
+          "isSystem": true,
+          "isPinwallable": true,
+          "isFavourite": false,
+          "title": "temp1",
+          "visualizationType": "table",
+          "datasetId": 3,
+          "qlikStateId": null,
+          "pageId": "/apps/dashboards/reporting",
+          "appId": "qplus_poc",
+          "tenantId": "SIHPOCWEB",
+          "customerId": "SIH",
+          "appUserId": "ceec306d-f313-4691-b3ad-7b8689f6e10c",
+          "templateId": 33
+        }
+      ]
+    }
+  ]
+}

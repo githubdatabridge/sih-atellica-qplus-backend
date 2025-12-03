@@ -1,0 +1,177 @@
+[
+    {
+        "id": "2GgxmrcJqlqFqh3G6qyOzW6azMMlKHJn",
+        "name": "cloud 1",
+        "host": "databridge-internal.eu.qlikcloud.com",
+        "port": null,
+        "apiKey": {
+            "id": "a11fba7f-9c93-4c59-a58d-6e2037d70570",
+            "exp": "05/06/2023",
+            "value": "eyJhbGciOiJFUzM4NCIsImtpZCI6ImExMWZiYTdmLTljOTMtNGM1OS1hNThkLTZlMjAzN2Q3MDU3MCIsInR5cCI6IkpXVCJ9.eyJzdWJUeXBlIjoidXNlciIsInRlbmFudElkIjoiMkdneG1yY0pxbHFGcWgzRzZxeU96VzZhek1NbEtISm4iLCJqdGkiOiJhMTFmYmE3Zi05YzkzLTRjNTktYTU4ZC02ZTIwMzdkNzA1NzAiLCJhdWQiOiJxbGlrLmFwaSIsImlzcyI6InFsaWsuYXBpL2FwaS1rZXlzIiwic3ViIjoiRXZSdnkxc05ScUttSnJpQzdzVzNob1hwSzNnVDkzOFAifQ.afr7rp9pThJkAzkxZ9ijxXZgHkkzwwe2i2xUfxDzEolBEY3_5GU_5i6fqai97JA0ca9IetZZSdZ13A9nJwAMv_yNaxy89SzR6VBLv6pdlNIs3r6svgWoPYk2HwkVD0-H"
+        },
+        "customers": [
+            {
+                "id": "notitia",
+                "name": "notitia",
+                "spaceId": "60a77186e14619000152ad15",
+                "apps": [
+                    {
+                        "id": "notitia-saas-app",
+                        "name": "notitia-saas-app",
+                        "qlikApps": [
+                            {
+                                "id": "73bb1d3f-f893-46c4-a8c4-5a8dc3cd078d",
+                                "name": "Consumer Sales"
+                            }
+                        ],
+                        "callbackUrl": "https://localhost:7005/qlik/dashboards/overview"
+                    },
+                    {
+                        "id": "notitia_demo",
+                        "name": "notitia_demo",
+                        "qlikApps": [
+                            {
+                                "id": "73bb1d3f-f893-46c4-a8c4-5a8dc3cd078d",
+                                "name": "Consumer Sales"
+                            }
+                        ],
+                        "callbackUrl": "https://localhost:3000/return"
+                    },
+                    {
+                        "id": "mashupApp2",
+                        "name": "MashupApp 2",
+                        "qlikApps": [
+                            {
+                                "id": "string",
+                                "name": "string"
+                            }
+                        ],
+                        "callbackUrl": "https://localhost:7005/return"
+                    }
+                ]
+            }
+        ],
+        "authType": "cloud",
+        "idProvider": {
+            "id": 1,
+            "type": "qlikOauth",
+            "clientId": "7c281511ea4f8ee1308e2b5d80658eb6",
+            "clientSecret": "5652e4c981e431e4dfd6267bb5cd43ad6075c1fa3bbb480fe626c5082bfb038f"
+        },
+        "tokenOptions": {
+            "keyid": "d84f25dc-790e-4893-a54f-37a97b825089",
+            "algorithm": "RS256"
+        }
+    },
+    {
+        "id": "1s3H-dIIz1USf5qpWfa1iY01nRrcQIx0",
+        "name": "notitia cloud",
+        "host": "notitia-cloud.ap.qlikcloud.com",
+        "port": null,
+        "apiKey": {
+            "value": "eyJhbGciOiJFUzM4NCIsImtpZCI6IjM2Zjk2OTkzLTUzNjQtNGY4NS05YTAxLTMzMjZkM2NmODc0NyIsInR5cCI6IkpXVCJ9.eyJzdWJUeXBlIjoidXNlciIsInRlbmFudElkIjoiMXMzSC1kSUl6MVVTZjVxcFdmYTFpWTAxblJyY1FJeDAiLCJqdGkiOiIzNmY5Njk5My01MzY0LTRmODUtOWEwMS0zMzI2ZDNjZjg3NDciLCJhdWQiOiJxbGlrLmFwaSIsImlzcyI6InFsaWsuYXBpL2FwaS1rZXlzIiwic3ViIjoiRlhvakNwNjA5SndNd1lPSzNQU1dKOGlONkZIV2NucVcifQ.IKP5-8v71TuzyttxSNhXaZ_k_stE-2OIxQLQ0UvDl-Pb9yQdA0tNsoKai4NHZATnZp_Crj6gpmAn7hrsNbLTMq2fuc5_KSLz0W4qHibqdmwefTY5Yi7cz9tVl644ER1e"
+        },
+        "customers": [
+            {
+                "id": "notitia saas",
+                "name": "notitia saas",
+                "spaceId": "61fa340857c75b50d6b45bdd",
+                "apps": [
+                    {
+                        "id": "notitia-saas-app",
+                        "name": "notitia-saas-app",
+                        "qlikApps": [
+                            {
+                                "id": "73bb1d3f-f893-46c4-a8c4-5a8dc3cd078d",
+                                "name": "Consumer Sales"
+                            }
+                        ],
+                        "callbackUrl": "https://localhost:7005/qlik/dashboards/overview"
+                    }
+                ]
+            }
+        ],
+        "authType": "cloud",
+        "idProvider": {
+            "id": 1,
+            "type": "qlikOauth",
+            "clientId": "541cf14f532c376032172fb30d71a388",
+            "clientSecret": "769355fae3dcba6e9e04bcc686a2fe2ca6d2308f5cba6e3e0e604ff315744c66"
+        },
+        "tokenOptions": {
+            "keyid": "e7ddcf6d-1e80-459e-abf1-f9b451a97935",
+            "algorithm": "RS256"
+        }
+    },
+    {
+        "id": "single_hardcoded_for_now",
+        "name": "local 1",
+        "host": "qs-i-dev.databridge.ch",
+        "port": 4242,
+        "customers": [
+            {
+                "id": "hardcoded_for_now",
+                "name": "customer 1",
+                "apps": [
+                    {
+                        "id": "insight_poc",
+                        "name": "insight_poc",
+                        "qlikApps": [
+                            {
+                                "id": "05cf243f-8413-42a2-a173-7f6b94c8a08e",
+                                "name": "compliments"
+                            },
+                            {
+                                "id": "ac8fd1a5-8a29-432a-9126-d00dacddbaca",
+                                "name": "audit"
+                            }
+                        ],
+                        "callbackUrl": "https://localhost:7005/qlik/dashboards/overview"
+                    }
+                ]
+            }
+        ],
+        "authType": "windows",
+        "idProvider": null
+    },
+    {
+        "id": "6lPH1PEmvbbafhl13oAHVkIKrVU4tnSR",
+        "name": "notitia cloud setup 1",
+        "host": "nz5rv91ev957nyk.ap.qlikcloud.com",
+        "port": null,
+        "apiKey": {
+            "value": "eyJhbGciOiJFUzM4NCIsImtpZCI6IjBkYmEwNjc0LWYwMTktNDY5OS1hYjhkLWNkODUwNTg5YmM1YyIsInR5cCI6IkpXVCJ9.eyJzdWJUeXBlIjoidXNlciIsInRlbmFudElkIjoiNmxQSDFQRW12YmJhZmhsMTNvQUhWa0lLclZVNHRuU1IiLCJqdGkiOiIwZGJhMDY3NC1mMDE5LTQ2OTktYWI4ZC1jZDg1MDU4OWJjNWMiLCJhdWQiOiJxbGlrLmFwaSIsImlzcyI6InFsaWsuYXBpL2FwaS1rZXlzIiwic3ViIjoiNjIyOTQ3MzM5MGJiYjdlNmM0YmY4OWUyIn0.fLOatI1xvRlpsf8U05E8TbSzuK7uFLa3MbR-hQB-Rx6722r7B00EMaX2nS80gup-VROoHaYxLOGVQ-Bj3q6sMidHtbWbonhvNuW3c6PqAMOGQd2ceMtODXbdGwb2JZSV"
+        },
+        "customers": [
+            {
+                "id": "notitia_setup1",
+                "name": "notitia_setup1",
+                "spaceId": "6229acfa33689cb7ca3612e5",
+                "apps": [
+                    {
+                        "id": "notitia-saas-app_setup1",
+                        "name": "notitia-saas-app_setup1",
+                        "qlikApps": [
+                            {
+                                "id": "73bb1d3f-f893-46c4-a8c4-5a8dc3cd078d",
+                                "name": "Consumer Sales"
+                            }
+                        ],
+                        "callbackUrl": "https://localhost:7005/qlik/dashboards/overview"
+                    }
+                ]
+            }
+        ],
+        "authType": "cloud",
+        "idProvider": {
+            "id": 4,
+            "type": "qlikOauth",
+            "clientId": "6d7ed17a15c72ae6de02a77309951404",
+            "clientSecret": "757756efa28295a54426c606dc3a54753f607eec752ceb1f2c6c5c7fcae9f082"
+        },
+        "tokenOptions": {
+            "keyid": "054dd374-420d-4c55-af94-39190ad1c815",
+            "algorithm": "RS256"
+        }
+    }
+]

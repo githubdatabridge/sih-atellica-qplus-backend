@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "outDir": "./build",
+        "lib": ["ES2020.Promise"],
+        "module": "commonjs",
+        "target": "ES2019",
+        "sourceMap": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "resolveJsonModule": true
+    },
+    "include": ["./src/**/*", "./src/**/*.json"],
+    "exclude": ["node_modules"]
+}

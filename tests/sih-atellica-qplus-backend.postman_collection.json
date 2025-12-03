@@ -1,0 +1,4967 @@
+{
+	"info": {
+		"_postman_id": "2ec84890-1878-424c-8cd4-269231f51c56",
+		"name": "sih-atellica-qplus-backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3032084"
+	},
+	"item": [
+		{
+			"name": "Test Users and Admin",
+			"item": [
+				{
+					"name": "Test user1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.test(\"I am \"+jsonData.user.name+ \" roles: \"+jsonData.roles.join(\", \"), function () {\r",
+									"  pm.expect(jsonData.user.name).to.exist;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+								"type": "text"
+							},
+							{
+								"key": "x-app-name",
+								"value": "{{x-app-name}}",
+								"type": "text"
+							},
+							{
+								"key": "x-vp",
+								"value": "{{x-vp}}",
+								"type": "text"
+							},
+							{
+								"key": "x-tenant-id",
+								"value": "{{x-tenant-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-customer-id",
+								"value": "{{x-customer-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/me",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test user2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.test(\"I am \"+jsonData.user.name+ \" roles: \"+jsonData.roles.join(\", \"), function () {\r",
+									"  pm.expect(jsonData.user.name).to.exist;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user2}}",
+								"type": "text"
+							},
+							{
+								"key": "x-app-name",
+								"value": "{{x-app-name}}",
+								"type": "text"
+							},
+							{
+								"key": "x-vp",
+								"value": "{{x-vp}}",
+								"type": "text"
+							},
+							{
+								"key": "x-tenant-id",
+								"value": "{{x-tenant-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-customer-id",
+								"value": "{{x-customer-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/me",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test  admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.test(\"I am \"+jsonData.user.name+ \" roles: \"+jsonData.roles.join(\", \"), function () {\r",
+									"  pm.expect(jsonData.user.name).to.exist;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+								"type": "text"
+							},
+							{
+								"key": "x-app-name",
+								"value": "{{x-app-name}}",
+								"type": "text"
+							},
+							{
+								"key": "x-vp",
+								"value": "{{x-vp}}",
+								"type": "text"
+							},
+							{
+								"key": "x-tenant-id",
+								"value": "{{x-tenant-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-customer-id",
+								"value": "{{x-customer-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/me",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ping",
+			"item": [
+				{
+					"name": "Ping",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"pm.test(\"Success\", function () {\r",
+									"    pm.expect(jsonData.ping).to.eql(\"ping-pong\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+								"type": "text"
+							},
+							{
+								"key": "x-app-name",
+								"value": "{{x-app-name}}",
+								"type": "text"
+							},
+							{
+								"key": "x-vp",
+								"value": "{{x-vp}}",
+								"type": "text"
+							},
+							{
+								"key": "x-tenant-id",
+								"value": "{{x-tenant-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-customer-id",
+								"value": "{{x-customer-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/ping",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ping"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Datasets",
+			"item": [
+				{
+					"name": "Fail to create dataset with not existing default type 400",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"  pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+								"type": "text"
+							},
+							{
+								"key": "x-app-name",
+								"value": "{{x-app-name}}",
+								"type": "text"
+							},
+							{
+								"key": "x-vp",
+								"value": "{{x-vp}}",
+								"type": "text"
+							},
+							{
+								"key": "x-tenant-id",
+								"value": "{{x-tenant-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-customer-id",
+								"value": "{{x-customer-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"qlikAppId\": \"05cf243f-8413-42a2-a173-7f6b94c8a08e\",\r\n  \"title\": \"string\",\r\n  \"description\": \"string\",\r\n  \"label\": \"string\",\r\n  \"type\": \"string\",\r\n  \"dimensions\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"measures\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"filters\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"visualizations\":[\r\n      {\r\n          \"name\":\"tt\",\r\n          \"isBaseChart\":true\r\n      }\r\n  ],\r\n  \"tags\": [\r\n    \"tg1\", \r\n    \"tg2\",\r\n    \"tg3\"\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/datasets",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"datasets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fail to create dataset with custom type with no properties 400",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"  pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+								"type": "text"
+							},
+							{
+								"key": "x-app-name",
+								"value": "{{x-app-name}}",
+								"type": "text"
+							},
+							{
+								"key": "x-vp",
+								"value": "{{x-vp}}",
+								"type": "text"
+							},
+							{
+								"key": "x-tenant-id",
+								"value": "{{x-tenant-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-customer-id",
+								"value": "{{x-customer-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"qlikAppId\": \"05cf243f-8413-42a2-a173-7f6b94c8a08e\",\r\n  \"title\": \"string\",\r\n  \"description\": \"string\",\r\n  \"label\": \"string\",\r\n  \"type\": \"string\",\r\n  \"dimensions\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"measures\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"filters\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"visualizations\":[\r\n      {\r\n          \"name\":\"tt\",\r\n          \"isBaseChart\":false,\r\n          \"properties\":{}\r\n      }\r\n  ],\r\n  \"tags\": [\r\n    \"tg1\", \r\n    \"tg2\",\r\n    \"tg3\"\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/datasets",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"datasets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fail to create dataset with custom type existing default type 400",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"  pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+								"type": "text"
+							},
+							{
+								"key": "x-app-name",
+								"value": "{{x-app-name}}",
+								"type": "text"
+							},
+							{
+								"key": "x-vp",
+								"value": "{{x-vp}}",
+								"type": "text"
+							},
+							{
+								"key": "x-tenant-id",
+								"value": "{{x-tenant-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-customer-id",
+								"value": "{{x-customer-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"qlikAppId\": \"05cf243f-8413-42a2-a173-7f6b94c8a08e\",\r\n  \"title\": \"string\",\r\n  \"description\": \"string\",\r\n  \"label\": \"string\",\r\n  \"type\": \"string\",\r\n  \"dimensions\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"measures\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"filters\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"visualizations\":[\r\n      {\r\n          \"name\":\"table\",\r\n          \"isBaseChart\":false,\r\n          \"properties\":{\"test\":1}\r\n      }\r\n  ],\r\n  \"tags\": [\r\n    \"tg1\", \r\n    \"tg2\",\r\n    \"tg3\"\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/datasets",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"datasets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin create dataset",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set(\"createDatasetId\", jsonData.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"  pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+								"type": "text"
+							},
+							{
+								"key": "x-app-name",
+								"value": "{{x-app-name}}",
+								"type": "text"
+							},
+							{
+								"key": "x-vp",
+								"value": "{{x-vp}}",
+								"type": "text"
+							},
+							{
+								"key": "x-tenant-id",
+								"value": "{{x-tenant-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-customer-id",
+								"value": "{{x-customer-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"qlikAppId\": \"05cf243f-8413-42a2-a173-7f6b94c8a08e\",\r\n  \"title\": \"string\",\r\n  \"description\": \"string\",\r\n  \"label\": \"string\",\r\n  \"type\": \"string\",\r\n  \"dimensions\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"measures\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"filters\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"visualizations\":[\r\n      {\r\n          \"name\":\"table\",\r\n          \"isBaseChart\":true\r\n      }\r\n  ],\r\n  \"tags\": [\r\n    \"tg1\", \r\n    \"tg2\",\r\n    \"tg3\"\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/datasets",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"datasets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin update dataset",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"pm.test(\"Title updated\", function () {\r",
+									"  pm.expect(jsonData.title.includes('UPDATED')).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+								"type": "text"
+							},
+							{
+								"key": "x-app-name",
+								"value": "{{x-app-name}}",
+								"type": "text"
+							},
+							{
+								"key": "x-vp",
+								"value": "{{x-vp}}",
+								"type": "text"
+							},
+							{
+								"key": "x-tenant-id",
+								"value": "{{x-tenant-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-customer-id",
+								"value": "{{x-customer-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"qlikAppId\": \"05cf243f-8413-42a2-a173-7f6b94c8a08e\",\r\n  \"title\": \"UPDATED\",\r\n  \"description\": \"string\",\r\n  \"label\": \"string\",\r\n  \"type\": \"string\",\r\n  \"dimensions\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"measures\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"filters\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"visualizations\":[\r\n      {\r\n          \"name\":\"table\",\r\n          \"isBaseChart\":true\r\n      }\r\n  ],\r\n  \"tags\": [\r\n    \"tg1\", \r\n    \"tg2\",\r\n    \"tg3\"\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/datasets/{{createDatasetId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"datasets",
+								"{{createDatasetId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin update dataset adding visualization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"pm.test(\"Visualization Added\", function () {\r",
+									"  pm.expect(jsonData.visualizations.length).to.eql(2);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+								"type": "text"
+							},
+							{
+								"key": "x-app-name",
+								"value": "{{x-app-name}}",
+								"type": "text"
+							},
+							{
+								"key": "x-vp",
+								"value": "{{x-vp}}",
+								"type": "text"
+							},
+							{
+								"key": "x-tenant-id",
+								"value": "{{x-tenant-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-customer-id",
+								"value": "{{x-customer-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"qlikAppId\": \"05cf243f-8413-42a2-a173-7f6b94c8a08e\",\r\n    \"title\": \"UPDATED\",\r\n    \"description\": \"string\",\r\n    \"label\": \"string\",\r\n    \"type\": \"string\",\r\n    \"dimensions\": [\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"label\": \"string\",\r\n            \"meta\": {\r\n                \"test\": \"test\"\r\n            }\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"meta\": {\r\n                \"test\": \"test\"\r\n            }\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"label\": \"string\"\r\n        }\r\n    ],\r\n    \"measures\": [\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"label\": \"string\",\r\n            \"meta\": {\r\n                \"test\": \"test\"\r\n            }\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"meta\": {\r\n                \"test\": \"test\"\r\n            }\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"label\": \"string\"\r\n        }\r\n    ],\r\n    \"filters\": [\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"label\": \"string\",\r\n            \"meta\": {\r\n                \"test\": \"test\"\r\n            }\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"meta\": {\r\n                \"test\": \"test\"\r\n            }\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"label\": \"string\"\r\n        }\r\n    ],\r\n    \"visualizations\": [\r\n        {\r\n            \"name\": \"table\",\r\n            \"isBaseChart\": true\r\n        },\r\n        {\r\n            \"name\": \"custom1\",\r\n            \"isBaseChart\": false,\r\n            \"properties\": {\r\n                \"test1\": \"1\"\r\n            },\r\n            \"mark\": \"create\"\r\n        }\r\n    ],\r\n    \"tags\": [\r\n        \"tg1\",\r\n        \"tg2\",\r\n        \"tg3\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/datasets/{{createDatasetId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"datasets",
+								"{{createDatasetId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin update dataset rename visualization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"pm.test(\"Visualization Name Changed\", function () {\r",
+									"  pm.expect(jsonData.visualizations[1].name).to.eql(\"custom2\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+								"type": "text"
+							},
+							{
+								"key": "x-app-name",
+								"value": "{{x-app-name}}",
+								"type": "text"
+							},
+							{
+								"key": "x-vp",
+								"value": "{{x-vp}}",
+								"type": "text"
+							},
+							{
+								"key": "x-tenant-id",
+								"value": "{{x-tenant-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-customer-id",
+								"value": "{{x-customer-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"qlikAppId\": \"05cf243f-8413-42a2-a173-7f6b94c8a08e\",\r\n    \"title\": \"UPDATED\",\r\n    \"description\": \"string\",\r\n    \"label\": \"string\",\r\n    \"type\": \"string\",\r\n    \"dimensions\": [\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"label\": \"string\",\r\n            \"meta\": {\r\n                \"test\": \"test\"\r\n            }\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"meta\": {\r\n                \"test\": \"test\"\r\n            }\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"label\": \"string\"\r\n        }\r\n    ],\r\n    \"measures\": [\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"label\": \"string\",\r\n            \"meta\": {\r\n                \"test\": \"test\"\r\n            }\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"meta\": {\r\n                \"test\": \"test\"\r\n            }\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"label\": \"string\"\r\n        }\r\n    ],\r\n    \"filters\": [\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"label\": \"string\",\r\n            \"meta\": {\r\n                \"test\": \"test\"\r\n            }\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"meta\": {\r\n                \"test\": \"test\"\r\n            }\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"label\": \"string\"\r\n        }\r\n    ],\r\n    \"visualizations\": [\r\n        {\r\n            \"name\": \"table\",\r\n            \"isBaseChart\": true\r\n        },\r\n        {\r\n            \"name\": \"custom1\",\r\n            \"isBaseChart\": false,\r\n            \"properties\": {\r\n                \"test1\": \"1\"\r\n            },\r\n            \"mark\": \"changeName\",\r\n            \"markParam\":\"custom2\"\r\n        }\r\n    ],\r\n    \"tags\": [\r\n        \"tg1\",\r\n        \"tg2\",\r\n        \"tg3\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/datasets/{{createDatasetId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"datasets",
+								"{{createDatasetId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin update dataset delete visualization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"pm.test(\"Visualization Name Changed\", function () {\r",
+									"  pm.expect(jsonData.visualizations.length).to.eql(1);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+								"type": "text"
+							},
+							{
+								"key": "x-app-name",
+								"value": "{{x-app-name}}",
+								"type": "text"
+							},
+							{
+								"key": "x-vp",
+								"value": "{{x-vp}}",
+								"type": "text"
+							},
+							{
+								"key": "x-tenant-id",
+								"value": "{{x-tenant-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-customer-id",
+								"value": "{{x-customer-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"qlikAppId\": \"05cf243f-8413-42a2-a173-7f6b94c8a08e\",\r\n    \"title\": \"UPDATED\",\r\n    \"description\": \"string\",\r\n    \"label\": \"string\",\r\n    \"type\": \"string\",\r\n    \"dimensions\": [\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"label\": \"string\",\r\n            \"meta\": {\r\n                \"test\": \"test\"\r\n            }\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"meta\": {\r\n                \"test\": \"test\"\r\n            }\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"label\": \"string\"\r\n        }\r\n    ],\r\n    \"measures\": [\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"label\": \"string\",\r\n            \"meta\": {\r\n                \"test\": \"test\"\r\n            }\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"meta\": {\r\n                \"test\": \"test\"\r\n            }\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"label\": \"string\"\r\n        }\r\n    ],\r\n    \"filters\": [\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"label\": \"string\",\r\n            \"meta\": {\r\n                \"test\": \"test\"\r\n            }\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"meta\": {\r\n                \"test\": \"test\"\r\n            }\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"label\": \"string\"\r\n        }\r\n    ],\r\n    \"visualizations\": [\r\n        {\r\n            \"name\": \"table\",\r\n            \"isBaseChart\": true\r\n        },\r\n        {\r\n            \"name\": \"custom2\",\r\n            \"isBaseChart\": false,\r\n            \"properties\": {\r\n                \"test1\": \"1\"\r\n            },\r\n            \"mark\": \"remove\"\r\n        }\r\n    ],\r\n    \"tags\": [\r\n        \"tg1\",\r\n        \"tg2\",\r\n        \"tg3\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/datasets/{{createDatasetId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"datasets",
+								"{{createDatasetId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Faild to update dataset with deleting last visualization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"  pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+								"type": "text"
+							},
+							{
+								"key": "x-app-name",
+								"value": "{{x-app-name}}",
+								"type": "text"
+							},
+							{
+								"key": "x-vp",
+								"value": "{{x-vp}}",
+								"type": "text"
+							},
+							{
+								"key": "x-tenant-id",
+								"value": "{{x-tenant-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-customer-id",
+								"value": "{{x-customer-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"qlikAppId\": \"05cf243f-8413-42a2-a173-7f6b94c8a08e\",\r\n    \"title\": \"UPDATED\",\r\n    \"description\": \"string\",\r\n    \"label\": \"string\",\r\n    \"type\": \"string\",\r\n    \"dimensions\": [\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"label\": \"string\",\r\n            \"meta\": {\r\n                \"test\": \"test\"\r\n            }\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"meta\": {\r\n                \"test\": \"test\"\r\n            }\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"label\": \"string\"\r\n        }\r\n    ],\r\n    \"measures\": [\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"label\": \"string\",\r\n            \"meta\": {\r\n                \"test\": \"test\"\r\n            }\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"meta\": {\r\n                \"test\": \"test\"\r\n            }\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"label\": \"string\"\r\n        }\r\n    ],\r\n    \"filters\": [\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"label\": \"string\",\r\n            \"meta\": {\r\n                \"test\": \"test\"\r\n            }\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"meta\": {\r\n                \"test\": \"test\"\r\n            }\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n        },\r\n        {\r\n            \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n            \"label\": \"string\"\r\n        }\r\n    ],\r\n    \"visualizations\": [\r\n        {\r\n            \"name\": \"table\",\r\n            \"isBaseChart\": true,\r\n            \"mark\": \"remove\"\r\n        }\r\n    ],\r\n    \"tags\": [\r\n        \"tg1\",\r\n        \"tg2\",\r\n        \"tg3\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/datasets/{{createDatasetId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"datasets",
+								"{{createDatasetId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin get dataset by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+								"type": "text"
+							},
+							{
+								"key": "x-app-name",
+								"value": "{{x-app-name}}",
+								"type": "text"
+							},
+							{
+								"key": "x-vp",
+								"value": "{{x-vp}}",
+								"type": "text"
+							},
+							{
+								"key": "x-tenant-id",
+								"value": "{{x-tenant-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-customer-id",
+								"value": "{{x-customer-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/datasets/{{createDatasetId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"datasets",
+								"{{createDatasetId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User get dataset by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+								"type": "text"
+							},
+							{
+								"key": "x-app-name",
+								"value": "{{x-app-name}}",
+								"type": "text"
+							},
+							{
+								"key": "x-vp",
+								"value": "{{x-vp}}",
+								"type": "text"
+							},
+							{
+								"key": "x-tenant-id",
+								"value": "{{x-tenant-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-customer-id",
+								"value": "{{x-customer-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/datasets/{{createDatasetId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"datasets",
+								"{{createDatasetId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User1 trys to update dataset",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {\r",
+									"  pm.response.to.have.status(403);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+								"type": "text"
+							},
+							{
+								"key": "x-app-name",
+								"value": "{{x-app-name}}",
+								"type": "text"
+							},
+							{
+								"key": "x-vp",
+								"value": "{{x-vp}}",
+								"type": "text"
+							},
+							{
+								"key": "x-tenant-id",
+								"value": "{{x-tenant-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-customer-id",
+								"value": "{{x-customer-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"qlikAppId\": \"05cf243f-8413-42a2-a173-7f6b94c8a08e\",\r\n  \"title\": \"UPDATED\",\r\n  \"description\": \"string\",\r\n  \"label\": \"string\",\r\n  \"type\": \"string\",\r\n  \"dimensions\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"measures\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"filters\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"visualizations\":[\r\n      {\r\n          \"name\":\"table\",\r\n          \"isBaseChart\":true\r\n      }\r\n  ],\r\n  \"tags\": [\r\n    \"tg1\", \r\n    \"tg2\",\r\n    \"tg3\"\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/datasets/{{createDatasetId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"datasets",
+								"{{createDatasetId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User1 trys to delete dataset",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {\r",
+									"  pm.response.to.have.status(403);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+								"type": "text"
+							},
+							{
+								"key": "x-app-name",
+								"value": "{{x-app-name}}",
+								"type": "text"
+							},
+							{
+								"key": "x-vp",
+								"value": "{{x-vp}}",
+								"type": "text"
+							},
+							{
+								"key": "x-tenant-id",
+								"value": "{{x-tenant-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-customer-id",
+								"value": "{{x-customer-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/datasets/{{createDatasetId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"datasets",
+								"{{createDatasetId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin delete dataset",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"CleanUp Test\", function () {\r",
+									"  pm.collectionVariables.set(\"createDatasetId\", null);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+								"type": "text"
+							},
+							{
+								"key": "x-app-name",
+								"value": "{{x-app-name}}",
+								"type": "text"
+							},
+							{
+								"key": "x-vp",
+								"value": "{{x-vp}}",
+								"type": "text"
+							},
+							{
+								"key": "x-tenant-id",
+								"value": "{{x-tenant-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-customer-id",
+								"value": "{{x-customer-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/datasets/{{createDatasetId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"datasets",
+								"{{createDatasetId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Force delete dataset",
+			"item": [
+				{
+					"name": "Admin create dataset",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set(\"createDatasetId\", jsonData.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"  pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+								"type": "text"
+							},
+							{
+								"key": "x-app-name",
+								"value": "{{x-app-name}}",
+								"type": "text"
+							},
+							{
+								"key": "x-vp",
+								"value": "{{x-vp}}",
+								"type": "text"
+							},
+							{
+								"key": "x-tenant-id",
+								"value": "{{x-tenant-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-customer-id",
+								"value": "{{x-customer-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"qlikAppId\": \"05cf243f-8413-42a2-a173-7f6b94c8a08e\",\r\n  \"title\": \"string\",\r\n  \"description\": \"string\",\r\n  \"label\": \"string\",\r\n  \"type\": \"string\",\r\n  \"dimensions\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"measures\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"filters\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"visualizations\":[\r\n      {\r\n          \"name\":\"piechart\",\r\n          \"isBaseChart\":true\r\n      }\r\n  ],\r\n  \"tags\": [\r\n    \"tg1\", \r\n    \"tg2\",\r\n    \"tg3\"\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/datasets",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"datasets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create system report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set(\"reportSystemCreateReportId\", jsonData.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"  pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+								"type": "text"
+							},
+							{
+								"key": "x-app-name",
+								"value": "{{x-app-name}}",
+								"type": "text"
+							},
+							{
+								"key": "x-vp",
+								"value": "{{x-vp}}",
+								"type": "text"
+							},
+							{
+								"key": "x-tenant-id",
+								"value": "{{x-tenant-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-customer-id",
+								"value": "{{x-customer-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"content\": {},\r\n  \"title\": \"system report\",\r\n  \"description\": \"string\",\r\n  \"visualizationType\": \"piechart\",\r\n  \"isPinwallable\": false,\r\n  \"datasetId\": {{createDatasetId}},\r\n  \"pageId\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/reports",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reports"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set(\"reportCreateReportId\", jsonData.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"  pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+								"type": "text"
+							},
+							{
+								"key": "x-app-name",
+								"value": "{{x-app-name}}",
+								"type": "text"
+							},
+							{
+								"key": "x-vp",
+								"value": "{{x-vp}}",
+								"type": "text"
+							},
+							{
+								"key": "x-tenant-id",
+								"value": "{{x-tenant-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-customer-id",
+								"value": "{{x-customer-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"content\": {},\r\n  \"title\": \"string\",\r\n  \"description\": \"string\",\r\n  \"visualizationType\": \"piechart\",\r\n  \"isPinwallable\": false,\r\n  \"datasetId\": {{createDatasetId}},\r\n  \"pageId\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/reports",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reports"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin delete dataset",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Cascade Delete of Dataset Test\", function () {\r",
+									"  pm.collectionVariables.set(\"createDatasetId\", null);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+								"type": "text"
+							},
+							{
+								"key": "x-app-name",
+								"value": "{{x-app-name}}",
+								"type": "text"
+							},
+							{
+								"key": "x-vp",
+								"value": "{{x-vp}}",
+								"type": "text"
+							},
+							{
+								"key": "x-tenant-id",
+								"value": "{{x-tenant-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-customer-id",
+								"value": "{{x-customer-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/datasets/{{createDatasetId}}?cascade=true",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"datasets",
+								"{{createDatasetId}}"
+							],
+							"query": [
+								{
+									"key": "cascade",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check system report 404",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"pm.test(\"System Report Status code is 404\", function () {\r",
+									"  pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+								"type": "text"
+							},
+							{
+								"key": "x-app-name",
+								"value": "{{x-app-name}}",
+								"type": "text"
+							},
+							{
+								"key": "x-vp",
+								"value": "{{x-vp}}",
+								"type": "text"
+							},
+							{
+								"key": "x-tenant-id",
+								"value": "{{x-tenant-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-customer-id",
+								"value": "{{x-customer-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/reports/{{reportSystemCreateReportId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reports",
+								"{{reportSystemCreateReportId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check report 404",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"pm.test(\"Report Status code is 404\", function () {\r",
+									"  pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+								"type": "text"
+							},
+							{
+								"key": "x-app-name",
+								"value": "{{x-app-name}}",
+								"type": "text"
+							},
+							{
+								"key": "x-vp",
+								"value": "{{x-vp}}",
+								"type": "text"
+							},
+							{
+								"key": "x-tenant-id",
+								"value": "{{x-tenant-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-customer-id",
+								"value": "{{x-customer-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/reports/{{reportCreateReportId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reports",
+								"{{reportCreateReportId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reports",
+			"item": [
+				{
+					"name": "Report Prepare test",
+					"item": [
+						{
+							"name": "Admin create dataset",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"pm.collectionVariables.set(\"reportCreateDatasetId\", jsonData.id);\r",
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"  pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"qlikAppId\": \"05cf243f-8413-42a2-a173-7f6b94c8a08e\",\r\n  \"title\": \"string\",\r\n  \"description\": \"string\",\r\n  \"label\": \"string\",\r\n  \"type\": \"string\",\r\n  \"dimensions\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"measures\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"filters\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"visualizations\":[\r\n      {\r\n          \"name\":\"piechart\",\r\n          \"isBaseChart\":true\r\n      }\r\n  ],\r\n  \"tags\": [\r\n    \"tg1\", \r\n    \"tg2\",\r\n    \"tg3\"\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/datasets",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"datasets"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "AdminCreatesUpdatesDelete",
+					"item": [
+						{
+							"name": "create system report",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"pm.collectionVariables.set(\"reportSystemCreateReportId\", jsonData.id);\r",
+											"\r",
+											"pm.test(\"system is true\", function () {\r",
+											"    pm.expect(jsonData.isSystem).to.eql(true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Shared is false\", function () {\r",
+											"    pm.expect(jsonData.shared).to.eql(false);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"isPinwallable is false\", function () {\r",
+											"    pm.expect(jsonData.isPinwallable).to.eql(false);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"isFavourite is hidden\", function () {\r",
+											"    pm.expect(jsonData.isFavourite).to.eql(undefined);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"sharedWithOthers is undefined\", function () {\r",
+											"    pm.expect(jsonData.sharedWithOthers).to.eql(undefined);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"  pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"content\": {},\r\n  \"title\": \"system report\",\r\n  \"description\": \"string\",\r\n  \"visualizationType\": \"piechart\",\r\n  \"isPinwallable\": false,\r\n  \"datasetId\": {{reportCreateDatasetId}},\r\n  \"pageId\": \"string\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/reports",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "check report 200",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"\r",
+											"pm.test(\"Shared is false\", function () {\r",
+											"    pm.expect(jsonData.shared).to.eql(false);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"isPinwallable is false\", function () {\r",
+											"    pm.expect(jsonData.isPinwallable).to.eql(false);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"isFavourite is hidden\", function () {\r",
+											"    pm.expect(jsonData.isFavourite).to.eql(undefined);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"system is true\", function () {\r",
+											"    pm.expect(jsonData.isSystem).to.eql(true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"sharedWithOthers is undefined\", function () {\r",
+											"    pm.expect(jsonData.sharedWithOthers).to.eql(undefined);\r",
+											"});\r",
+											"\r",
+											"var datasetId = pm.collectionVariables.get(\"reportCreateDatasetId\")\r",
+											"pm.test(\"datasetId is \"+datasetId, function () {\r",
+											"    pm.expect(jsonData.dataset.id).to.eql(datasetId);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/reports/{{reportSystemCreateReportId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports",
+										"{{reportSystemCreateReportId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user1 check action 200",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"\r",
+											"pm.test(\"Have to have action of type SystemReportCreated\", function () {\r",
+											"    pm.expect(jsonData.pagination.total).to.eql(1);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/actions/reports?filter[reportId][eq]={{reportSystemCreateReportId}}&filter[type][eq]={{SystemReportCreated}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"actions",
+										"reports"
+									],
+									"query": [
+										{
+											"key": "filter[reportId][eq]",
+											"value": "{{reportSystemCreateReportId}}"
+										},
+										{
+											"key": "filter[type][eq]",
+											"value": "{{SystemReportCreated}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user2 check action 200",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"\r",
+											"pm.test(\"Have to have action of type SystemReportCreated\", function () {\r",
+											"    pm.expect(jsonData.pagination.total).to.eql(1);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user2}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/actions/reports?filter[reportId][eq]={{reportSystemCreateReportId}}&filter[type][eq]={{SystemReportCreated}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"actions",
+										"reports"
+									],
+									"query": [
+										{
+											"key": "filter[reportId][eq]",
+											"value": "{{reportSystemCreateReportId}}"
+										},
+										{
+											"key": "filter[type][eq]",
+											"value": "{{SystemReportCreated}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "admin check action 200",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"\r",
+											"pm.test(\"Dosen't have action of type SystemReportCreated\", function () {\r",
+											"    pm.expect(jsonData.pagination.total).to.eql(0);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/actions/reports?filter[reportId][eq]={{reportSystemCreateReportId}}&filter[type][eq]={{SystemReportCreated}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"actions",
+										"reports"
+									],
+									"query": [
+										{
+											"key": "filter[reportId][eq]",
+											"value": "{{reportSystemCreateReportId}}"
+										},
+										{
+											"key": "filter[type][eq]",
+											"value": "{{SystemReportCreated}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user1 trys to update system report",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"  pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"isPinwallable\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/reports/{{reportSystemCreateReportId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports",
+										"{{reportSystemCreateReportId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "admin updates system report",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"\r",
+											"pm.test(\"title includes UPDATED\", function () {\r",
+											"    pm.expect(jsonData.title.includes('UPDATED')).to.eql(true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"system report UPDATED\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/reports/{{reportSystemCreateReportId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports",
+										"{{reportSystemCreateReportId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete report",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"  pm.response.to.have.status(204);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"isPinwallable\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/reports/{{reportSystemCreateReportId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports",
+										"{{reportSystemCreateReportId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "check reportId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"  pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"CleanUp Test\", function () {\r",
+											"  pm.collectionVariables.set(\"reportSystemCreateReportId\", null);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/reports/{{reportSystemCreateReportId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports",
+										"{{reportSystemCreateReportId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "UserCreatesUpdatesDelete",
+					"item": [
+						{
+							"name": "create report",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"pm.collectionVariables.set(\"reportCreateReportId\", jsonData.id);\r",
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"  pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"content\": {},\r\n  \"title\": \"string\",\r\n  \"description\": \"string\",\r\n  \"visualizationType\": \"piechart\",\r\n  \"isPinwallable\": false,\r\n  \"datasetId\": {{reportCreateDatasetId}},\r\n  \"pageId\": \"string\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/reports",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "check report 200",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"\r",
+											"pm.test(\"Shared is false\", function () {\r",
+											"    pm.expect(jsonData.shared).to.eql(false);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"isPinwallable is false\", function () {\r",
+											"    pm.expect(jsonData.isPinwallable).to.eql(false);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"isFavourite is not hidden - false\", function () {\r",
+											"    pm.expect(jsonData.isFavourite).to.eql(false);\r",
+											"});\r",
+											"\r",
+											"var datasetId =pm.collectionVariables.get(\"reportCreateDatasetId\")\r",
+											"pm.test(\"datasetId is \"+datasetId, function () {\r",
+											"    pm.expect(jsonData.dataset.id).to.eql(datasetId);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"system is false\", function () {\r",
+											"    pm.expect(jsonData.isSystem).to.eql(false);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"sharedWithOthers is false\", function () {\r",
+											"    pm.expect(jsonData.sharedWithOthers).to.eql(false);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/reports/{{reportCreateReportId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports",
+										"{{reportCreateReportId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update report",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"isPinwallable\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/reports/{{reportCreateReportId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports",
+										"{{reportCreateReportId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete report",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"  pm.response.to.have.status(204);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"isPinwallable\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/reports/{{reportCreateReportId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports",
+										"{{reportCreateReportId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "check reportId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"  pm.response.to.have.status(404);\r",
+											"});\r",
+											"pm.test(\"CleanUp Test\", function () {\r",
+											"  pm.collectionVariables.set(\"reportCreateReportId\", null);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"isPinwallable\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/reports/{{reportCreateReportId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports",
+										"{{reportCreateReportId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "UserCreatesShareUnshareDelete",
+					"item": [
+						{
+							"name": "create report user1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"pm.collectionVariables.set(\"reportSharedReportId\", jsonData.id);\r",
+											"\r",
+											"var datasetId =pm.collectionVariables.get(\"reportCreateDatasetId\")\r",
+											"pm.test(\"datasetId is \"+datasetId, function () {\r",
+											"    pm.expect(jsonData.dataset.id).to.eql(datasetId);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"isFavourite is true\", function () {\r",
+											"    pm.expect(jsonData.isFavourite).to.eql(true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"  pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"content\": {},\r\n  \"title\": \"string\",\r\n  \"description\": \"string\",\r\n  \"visualizationType\": \"piechart\",\r\n  \"isPinwallable\": false,\r\n    \"isFavourite\": true,\r\n  \"datasetId\": {{reportCreateDatasetId}},\r\n  \"pageId\": \"string\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/reports",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get user2 id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"pm.collectionVariables.set(\"user2_id\", jsonData.user.appUserId);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user2}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/me",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user1 share report with user2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"  pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"appUserIds\": [\"{{user2_id}}\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/reports/{{reportSharedReportId}}/share",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports",
+										"{{reportSharedReportId}}",
+										"share"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user2 check report 200",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"\r",
+											"pm.test(\"Shared is true\", function () {\r",
+											"    pm.expect(jsonData.shared).to.eql(true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"isPinwallable is false\", function () {\r",
+											"    pm.expect(jsonData.isPinwallable).to.eql(false);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"isFavourite is hidden\", function () {\r",
+											"    pm.expect(jsonData.isFavourite).to.eql(undefined);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"system is false\", function () {\r",
+											"    pm.expect(jsonData.isSystem).to.eql(false);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user2}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/reports/{{reportSharedReportId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports",
+										"{{reportSharedReportId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user2 check action 200",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"\r",
+											"pm.test(\"Have to have action of type UserSharedReport\", function () {\r",
+											"    pm.expect(jsonData.pagination.total).to.eql(1);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user2}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/actions/reports?filter[reportId][eq]={{reportSharedReportId}}&filter[type][eq]={{UserSharedReport}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"actions",
+										"reports"
+									],
+									"query": [
+										{
+											"key": "filter[reportId][eq]",
+											"value": "{{reportSharedReportId}}"
+										},
+										{
+											"key": "filter[type][eq]",
+											"value": "{{UserSharedReport}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user2 trys to update shared report",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"  pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user2}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"isPinwallable\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/reports/{{reportSharedReportId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports",
+										"{{reportSharedReportId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user1 unshare report with user2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"appUserIds\": [\"{{user2_id}}\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/reports/{{reportSharedReportId}}/share",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports",
+										"{{reportSharedReportId}}",
+										"share"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user2 check report 404",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"  pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user2}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/reports/{{reportSharedReportId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports",
+										"{{reportSharedReportId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user2 get total of reports",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"pm.collectionVariables.set(\"user2_total_reports\", jsonData.pagination.total===0?1:jsonData.pagination.total);\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user2}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/reports",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user2 check all report | does not see unshared report",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"var id =pm.collectionVariables.get(\"reportSharedReportId\")\r",
+											"pm.test(\"ReportId \"+id+\" not found\", function () {\r",
+											"    \r",
+											"    var any = jsonData.data.some(x=>x.id===id)\r",
+											"    pm.expect(any).to.eql(false);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user2}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/reports?page=1&perPage={{user2_total_reports}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "perPage",
+											"value": "{{user2_total_reports}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user1 delete report",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"  pm.response.to.have.status(204);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"CleanUp Test\", function () {\r",
+											"  pm.collectionVariables.set(\"reportSharedReportId\", null);\r",
+											"  pm.collectionVariables.set(\"user2_id\", null);\r",
+											"  pm.collectionVariables.set(\"user2_total_reports\", null);\r",
+											"  pm.expect(true).to.eql(true)\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/reports/{{reportSharedReportId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports",
+										"{{reportSharedReportId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "End Report test",
+					"item": [
+						{
+							"name": "Admin delete dataset",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"CleanUp Test\", function () {\r",
+											"  pm.collectionVariables.set(\"reportCreateDatasetId\", null);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/datasets/{{reportCreateDatasetId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"datasets",
+										"{{reportCreateDatasetId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Pinwall",
+			"item": [
+				{
+					"name": "Pinwall Prepare test",
+					"item": [
+						{
+							"name": "Admin create dataset",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"pm.collectionVariables.set(\"datasetId_pinwall\", jsonData.id);\r",
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"  pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"qlikAppId\": \"05cf243f-8413-42a2-a173-7f6b94c8a08e\",\r\n  \"title\": \"string\",\r\n  \"description\": \"string\",\r\n  \"label\": \"string\",\r\n  \"type\": \"string\",\r\n  \"dimensions\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"measures\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"filters\": [\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"meta\": {\"test\":\"test\"}\r\n    },  {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\"\r\n    },\r\n    {\r\n      \"qId\": \"9e0e820a-182f-4194-8262-5bc130d3e80b\",\r\n      \"label\": \"string\"\r\n    }\r\n  ],\r\n  \"visualizations\":[\r\n      {\r\n          \"name\":\"piechart\",\r\n          \"isBaseChart\":true\r\n      }\r\n  ],\r\n  \"tags\": [\r\n    \"tg1\", \r\n    \"tg2\",\r\n    \"tg3\"\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/datasets",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"datasets"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin create system report",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"pm.collectionVariables.set(\"systemReportId_pinwall\", jsonData.id);\r",
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"  pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"content\": {},\r\n  \"title\": \"system report\",\r\n  \"description\": \"string\",\r\n  \"visualizationType\": \"piechart\",\r\n  \"isPinwallable\": false,\r\n  \"datasetId\": {{datasetId_pinwall}},\r\n  \"pageId\": \"string\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/reports",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User create report | IsPinwallable=false",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"pm.collectionVariables.set(\"reportId_pinwall\", jsonData.id);\r",
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"  pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"content\": {},\r\n  \"title\": \"string\",\r\n  \"description\": \"string\",\r\n  \"visualizationType\": \"piechart\",\r\n  \"isPinwallable\": false,\r\n  \"datasetId\": {{datasetId_pinwall}},\r\n  \"pageId\": \"string\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/reports",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PinwallCreateUpdateDelete",
+					"item": [
+						{
+							"name": "User1 create pinwall",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"pm.collectionVariables.set(\"pinwallId\", jsonData.id);\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"isFavourite is true\", function () {\r",
+											"    pm.expect(jsonData.isFavourite).to.eql(true);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"string\",\r\n  \"description\": \"string\",\r\n  \"isFavourite\":true,\r\n  \"content\": {\r\n    \"cellCount\": 1\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pin-walls",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pin-walls"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User1 trys to update pinwall",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400 report is not pinwallable\", function () {\r",
+											"  pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"content\": {\r\n    \"cellCount\": 2,\r\n    \"cells\": [\r\n      {\r\n        \"reportId\": {{reportId_pinwall}},\r\n        \"width\": 1,\r\n        \"height\": 1,\r\n        \"x\": 0,\r\n        \"y\": 0\r\n      },\r\n      {\r\n        \"visualizationId\": \"empty-1-0\",\r\n        \"width\": 1,\r\n        \"height\": 1,\r\n        \"x\": 1,\r\n        \"y\": 0\r\n      }\r\n    ]\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pin-walls/{{pinwallId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pin-walls",
+										"{{pinwallId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User1 update report isPinwallable to true",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"isPinwallable\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/reports/{{reportId_pinwall}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports",
+										"{{reportId_pinwall}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User2 trys to update pinwall",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"  pm.response.to.have.status(401);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user2}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"content\": {\r\n    \"cellCount\": 2,\r\n    \"cells\": [\r\n      {\r\n        \"reportId\": {{reportId_pinwall}},\r\n        \"width\": 1,\r\n        \"height\": 1,\r\n        \"x\": 0,\r\n        \"y\": 0\r\n      },\r\n      {\r\n        \"visualizationId\": \"empty-1-0\",\r\n        \"width\": 1,\r\n        \"height\": 1,\r\n        \"x\": 1,\r\n        \"y\": 0\r\n      }\r\n    ]\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pin-walls/{{pinwallId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pin-walls",
+										"{{pinwallId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User1 update pinwall",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"\r",
+											"pm.test(\"ReportId is in content cells\", function () {\r",
+											"    var reportId = pm.collectionVariables.get('reportId_pinwall');\r",
+											"    pm.expect(jsonData.content.cells[0].reportId).to.eql(reportId);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"isFavourite is false\", function () {\r",
+											"    pm.expect(jsonData.isFavourite).to.eql(false);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"isFavourite\":false,\r\n  \"content\": {\r\n    \"cellCount\": 2,\r\n    \"cells\": [\r\n      {\r\n        \"reportId\": {{reportId_pinwall}},\r\n        \"width\": 1,\r\n        \"height\": 1,\r\n        \"x\": 0,\r\n        \"y\": 0\r\n      },\r\n      {\r\n        \"visualizationId\": \"empty-1-0\",\r\n        \"width\": 1,\r\n        \"height\": 1,\r\n        \"x\": 1,\r\n        \"y\": 0\r\n      }\r\n    ]\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pin-walls/{{pinwallId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pin-walls",
+										"{{pinwallId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User1 update report isPinwallable to false",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"isPinwallable\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/reports/{{reportId_pinwall}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports",
+										"{{reportId_pinwall}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User1 get pinwall test cells for reportId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"\r",
+											"pm.test(\"ReportId successfully removed from pinwall\", function () {\r",
+											"    pm.expect(jsonData.content.cells[0].reportId).to.eql(undefined);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pin-walls/{{pinwallId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pin-walls",
+										"{{pinwallId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User delete pinwall",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"  pm.response.to.have.status(204);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"CleanUp Test\", function () {\r",
+											"    pm.collectionVariables.set(\"pinwallId\", null);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pin-walls/{{pinwallId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pin-walls",
+										"{{pinwallId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Pinwall End test",
+					"item": [
+						{
+							"name": "Admin trys to delete dataset [expact 403]",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {\r",
+											"  pm.response.to.have.status(403);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/datasets/{{datasetId_pinwall}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"datasets",
+										"{{datasetId_pinwall}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin delete system report",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"  pm.response.to.have.status(204);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"CleanUp Test\", function () {;\r",
+											"    pm.collectionVariables.set(\"systemReportId_pinwall\", null);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/reports/{{systemReportId_pinwall}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports",
+										"{{systemReportId_pinwall}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User delete report",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"  pm.response.to.have.status(204);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"CleanUp Test\", function () {\r",
+											"    pm.collectionVariables.set(\"reportId_pinwall\", null);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/reports/{{reportId_pinwall}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports",
+										"{{reportId_pinwall}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin delete dataset",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"CleanUp Test\", function () {\r",
+											"    pm.collectionVariables.set(\"datasetId_pinwall\", null);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/datasets/{{datasetId_pinwall}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"datasets",
+										"{{datasetId_pinwall}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000/app"
+		},
+		{
+			"key": "sessionId_user1",
+			"value": "b3656d89-3b03-4dca-bd29-ca45e411b3d8"
+		},
+		{
+			"key": "sessionId_user2",
+			"value": "9386981d-15af-46e4-8769-05550d27dc37"
+		},
+		{
+			"key": "sessionId_admin",
+			"value": "483538fa-4200-4bcd-80f4-3f3ec2031882"
+		},
+		{
+			"key": "x-vp",
+			"value": "localhost"
+		},
+		{
+			"key": "x-app-name",
+			"value": "app"
+		},
+		{
+			"key": "x-tenant-id",
+			"value": "tenant"
+		},
+		{
+			"key": "x-customer-id",
+			"value": "customer"
+		},
+		{
+			"key": "reportCreateReportId",
+			"value": ""
+		},
+		{
+			"key": "user1_id",
+			"value": ""
+		},
+		{
+			"key": "user2_id",
+			"value": ""
+		},
+		{
+			"key": "reportSharedReportId",
+			"value": ""
+		},
+		{
+			"key": "user2_total_reports",
+			"value": ""
+		},
+		{
+			"key": "reportSystemCreateReportId",
+			"value": ""
+		},
+		{
+			"key": "createDatasetId",
+			"value": ""
+		},
+		{
+			"key": "reportCreateDatasetId",
+			"value": ""
+		},
+		{
+			"key": "reportId_pinwall",
+			"value": ""
+		},
+		{
+			"key": "systemReportId_pinwall",
+			"value": ""
+		},
+		{
+			"key": "datasetId_pinwall",
+			"value": ""
+		},
+		{
+			"key": "pinwallId",
+			"value": ""
+		},
+		{
+			"key": "SystemReportCreated",
+			"value": "system.report.created"
+		},
+		{
+			"key": "UserSharedReport",
+			"value": "user.shared.report"
+		}
+	]
+}

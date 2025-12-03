@@ -1,0 +1,1587 @@
+{
+	"info": {
+		"_postman_id": "670dd856-d3e0-48b8-bfc9-9abf76470b85",
+		"name": "sih-atellica-qplus-backend-bookmarks",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3032084"
+	},
+	"item": [
+		{
+			"name": "Bookmarks",
+			"item": [
+				{
+					"name": "Test Users and Admin",
+					"item": [
+						{
+							"name": "Test user1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"pm.collectionVariables.set('user1_id',jsonData.user.appUserId);\r",
+											"pm.test(\"I am \"+jsonData.user.name+ \" roles: \"+jsonData.roles.join(\", \"), function () {\r",
+											"  pm.expect(jsonData.user.name).to.exist;\r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/me",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test user2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"pm.collectionVariables.set('user2_id',jsonData.user.appUserId);\r",
+											"\r",
+											"pm.test(\"I am \"+jsonData.user.name+ \" roles: \"+jsonData.roles.join(\", \"), function () {\r",
+											"  pm.expect(jsonData.user.name).to.exist;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user2}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/me",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test  admin",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"pm.collectionVariables.set('admin_id',jsonData.user.appUserId);\r",
+											"pm.test(\"I am \"+jsonData.user.name+ \" roles: \"+jsonData.roles.join(\", \"), function () {\r",
+											"  pm.expect(jsonData.user.name).to.exist;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/me",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"me"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Create Bookmark",
+					"item": [
+						{
+							"name": "User1 faled create Bookmark 400",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"  pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"string\",\r\n  \"path\": \"string\",\r\n  \"bookmarkItems\": [\r\n    {\r\n      \"qlikAppId\": \"05cf243f-8413-42a2-a173-7f6b94c8a08e\",\r\n      \"qlikState\": {\r\n        \"qsSelectionHash\": 0,\r\n        \"selections\": [],\r\n        \"meta\": {}\r\n      }\r\n    },\r\n     {\r\n      \"qlikAppId\": \"ac8fd1a5-8a29-432a-9126-d00dacddbaca\",\r\n      \"qlikState\": {\r\n        \"qsBookmarkId\": \"string\",\r\n        \"qsSelectionHash\": 0,\r\n        \"meta\": {}\r\n      }\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/bookmarks",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bookmarks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User1 create Private Bookmark",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"pm.collectionVariables.set(\"privateBookmarkId\", jsonData.id);\r",
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"  pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"string\",\r\n  \"path\": \"string\",\r\n  \"bookmarkItems\": [\r\n    {\r\n      \"qlikAppId\": \"05cf243f-8413-42a2-a173-7f6b94c8a08e\",\r\n      \"qlikState\": {\r\n        \"qsSelectionHash\": 0,\r\n        \"qsBookmarkId\": \"string\",\r\n        \"meta\": {}\r\n      }\r\n    },\r\n     {\r\n      \"qlikAppId\": \"ac8fd1a5-8a29-432a-9126-d00dacddbaca\",\r\n      \"qlikState\": {\r\n        \"qsBookmarkId\": \"string\",\r\n        \"qsSelectionHash\": 0,\r\n        \"meta\": {}\r\n      }\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/bookmarks",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bookmarks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User1 create Public Bookmark",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"pm.collectionVariables.set(\"bookmarkId\", jsonData.id);\r",
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"  pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"public\",\r\n    \"path\": \"string\",\r\n    \"bookmarkItems\": [\r\n        {\r\n            \"qlikAppId\": \"05cf243f-8413-42a2-a173-7f6b94c8a08e\",\r\n            \"qlikState\": {\r\n                \"qsSelectionHash\": 0,\r\n                \"selections\": [],\r\n                \"meta\": {}\r\n            }\r\n        },\r\n        {\r\n            \"qlikAppId\": \"05cf243f-8413-42a2-a173-7f6b94c8a08e\",\r\n            \"qlikState\": {\r\n                \"qsSelectionHash\": 0,\r\n                \"selections\": [],\r\n                \"meta\": {}\r\n            }\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/bookmarks",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bookmarks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User1 query Bookmarks",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"var id = pm.collectionVariables.get(\"bookmarkId\")\r",
+											"\r",
+											"pm.test(\"Bookmark with id \"+id, function () {\r",
+											"    var any = jsonData.data.some(x=>x.id===id)\r",
+											"    pm.expect(any).to.eql(true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"string\",\r\n  \"path\": \"string\",\r\n  \"bookmarkItems\": [\r\n    {\r\n      \"qlikAppId\": \"05cf243f-8413-42a2-a173-7f6b94c8a08e\",\r\n      \"qlikState\": {\r\n        \"qsSelectionHash\": 0,\r\n        \"selections\": [],\r\n        \"meta\": {}\r\n      }\r\n    },\r\n     {\r\n      \"qlikAppId\": \"ac8fd1a5-8a29-432a-9126-d00dacddbaca\",\r\n      \"qlikState\": {\r\n        \"qsBookmarkId\": \"string\",\r\n        \"qsSelectionHash\": 0,\r\n        \"meta\": {}\r\n      }\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/bookmarks",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bookmarks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User1 query Bookmarks By Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"var id = pm.collectionVariables.get(\"bookmarkId\")\r",
+											"\r",
+											"pm.test(\"Bookmark with id \" + id, function () {\r",
+											"    var result = jsonData.id === id\r",
+											"    pm.expect(result).to.eql(true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"string\",\r\n  \"path\": \"string\",\r\n  \"bookmarkItems\": [\r\n    {\r\n      \"qlikAppId\": \"05cf243f-8413-42a2-a173-7f6b94c8a08e\",\r\n      \"qlikState\": {\r\n        \"qsSelectionHash\": 0,\r\n        \"selections\": [],\r\n        \"meta\": {}\r\n      }\r\n    },\r\n     {\r\n      \"qlikAppId\": \"ac8fd1a5-8a29-432a-9126-d00dacddbaca\",\r\n      \"qlikState\": {\r\n        \"qsBookmarkId\": \"string\",\r\n        \"qsSelectionHash\": 0,\r\n        \"meta\": {}\r\n      }\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/bookmarks/{{bookmarkId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bookmarks",
+										"{{bookmarkId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User1 try to update Private Bookmark 400",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"  pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"string\",\r\n  \"path\": \"string\",\r\n  \"bookmarkItems\": [\r\n    {\r\n      \"qlikAppId\": \"05cf243f-8413-42a2-a173-7f6b94c8a08e\",\r\n      \"qlikState\": {\r\n        \"qsSelectionHash\": 0,\r\n        \"selections\": [],\r\n        \"meta\": {}\r\n      }\r\n    },\r\n     {\r\n      \"qlikAppId\": \"ac8fd1a5-8a29-432a-9126-d00dacddbaca\",\r\n      \"qlikState\": {\r\n        \"qsSelectionHash\": 0,\r\n        \"meta\": {},\r\n        \"selections\": []\r\n      }\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/bookmarks/{{privateBookmarkId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bookmarks",
+										"{{privateBookmarkId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User2 try to update Public Bookmark 403",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {\r",
+											"  pm.response.to.have.status(403);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user2}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"string\",\r\n  \"path\": \"string\",\r\n  \"bookmarkItems\": [\r\n    {\r\n      \"qlikAppId\": \"05cf243f-8413-42a2-a173-7f6b94c8a08e\",\r\n      \"qlikState\": {\r\n        \"qsSelectionHash\": 0,\r\n        \"selections\": [],\r\n        \"meta\": {}\r\n      }\r\n    },\r\n     {\r\n      \"qlikAppId\": \"ac8fd1a5-8a29-432a-9126-d00dacddbaca\",\r\n      \"qlikState\": {\r\n        \"qsSelectionHash\": 0,\r\n        \"meta\": {},\r\n        \"selections\": []\r\n      }\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/bookmarks/{{bookmarkId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bookmarks",
+										"{{bookmarkId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Share",
+					"item": [
+						{
+							"name": "user1 share bookmark with user2 and admin",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"  pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"appUserIds\": [\"{{user2_id}}\",\"{{admin_id}}\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/bookmarks/{{bookmarkId}}/share",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bookmarks",
+										"{{bookmarkId}}",
+										"share"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user1 try to share private bookmark with user2 and admin 400",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"  pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"appUserIds\": [\"{{user2_id}}\",\"{{admin_id}}\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/bookmarks/{{privateBookmarkId}}/share",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bookmarks",
+										"{{privateBookmarkId}}",
+										"share"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User2 query shared Bookmark By Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"var id = pm.collectionVariables.get(\"bookmarkId\")\r",
+											"\r",
+											"pm.test(\"Bookmark with id \" + id, function () {\r",
+											"    var result = jsonData.id === id\r",
+											"    pm.expect(result).to.eql(true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user2}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/bookmarks/{{bookmarkId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bookmarks",
+										"{{bookmarkId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User2 query shared Bookmark",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"var id = pm.collectionVariables.get(\"bookmarkId\")\r",
+											"\r",
+											"pm.test(\"Bookmark with id \" + id, function () {\r",
+											"    var result = jsonData.data[0].id === id\r",
+											"    pm.expect(result).to.eql(true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user2}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/bookmarks",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bookmarks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin query shared Bookmark By Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"var id = pm.collectionVariables.get(\"bookmarkId\")\r",
+											"\r",
+											"pm.test(\"Bookmark with id \" + id, function () {\r",
+											"    var result = jsonData.id === id\r",
+											"    pm.expect(result).to.eql(true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_admin}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/bookmarks/{{bookmarkId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bookmarks",
+										"{{bookmarkId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user1 unshare bookmark with user2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"  pm.response.to.have.status(204);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"appUserIds\": [\"{{user2_id}}\",\"{{admin_id}}\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/bookmarks/{{bookmarkId}}/share",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bookmarks",
+										"{{bookmarkId}}",
+										"share"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User2 query Bookmarks By Id 404",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"  pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user2}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"string\",\r\n  \"path\": \"string\",\r\n  \"bookmarkItems\": [\r\n    {\r\n      \"qlikAppId\": \"05cf243f-8413-42a2-a173-7f6b94c8a08e\",\r\n      \"qlikState\": {\r\n        \"qsSelectionHash\": 0,\r\n        \"selections\": [],\r\n        \"meta\": {}\r\n      }\r\n    },\r\n     {\r\n      \"qlikAppId\": \"ac8fd1a5-8a29-432a-9126-d00dacddbaca\",\r\n      \"qlikState\": {\r\n        \"qsBookmarkId\": \"string\",\r\n        \"qsSelectionHash\": 0,\r\n        \"meta\": {}\r\n      }\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/bookmarks/{{bookmarkId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bookmarks",
+										"{{bookmarkId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Bookmarks End test",
+					"item": [
+						{
+							"name": "User2 try to delete Bookmark 403",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {\r",
+											"  pm.response.to.have.status(403);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user2}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/bookmarks/{{bookmarkId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bookmarks",
+										"{{bookmarkId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User1 delete Bookmark",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"  pm.response.to.have.status(204);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/bookmarks/{{bookmarkId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bookmarks",
+										"{{bookmarkId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User1 delete Bookmark Private",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"  pm.response.to.have.status(204);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/bookmarks/{{privateBookmarkId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bookmarks",
+										"{{privateBookmarkId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User1 query Bookmarks By Id 404",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"  pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "X-Qlik-Session-{{x-vp}}={{sessionId_user1}}",
+										"type": "text"
+									},
+									{
+										"key": "x-app-name",
+										"value": "{{x-app-name}}",
+										"type": "text"
+									},
+									{
+										"key": "x-vp",
+										"value": "{{x-vp}}",
+										"type": "text"
+									},
+									{
+										"key": "x-tenant-id",
+										"value": "{{x-tenant-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-customer-id",
+										"value": "{{x-customer-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"string\",\r\n  \"path\": \"string\",\r\n  \"bookmarkItems\": [\r\n    {\r\n      \"qlikAppId\": \"05cf243f-8413-42a2-a173-7f6b94c8a08e\",\r\n      \"qlikState\": {\r\n        \"qsSelectionHash\": 0,\r\n        \"selections\": [],\r\n        \"meta\": {}\r\n      }\r\n    },\r\n     {\r\n      \"qlikAppId\": \"ac8fd1a5-8a29-432a-9126-d00dacddbaca\",\r\n      \"qlikState\": {\r\n        \"qsBookmarkId\": \"string\",\r\n        \"qsSelectionHash\": 0,\r\n        \"meta\": {}\r\n      }\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/bookmarks/{{bookmarkId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bookmarks",
+										"{{bookmarkId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3002"
+		},
+		{
+			"key": "sessionId_user1",
+			"value": "user1"
+		},
+		{
+			"key": "sessionId_admin",
+			"value": "admin"
+		},
+		{
+			"key": "x-vp",
+			"value": "localhost"
+		},
+		{
+			"key": "x-app-name",
+			"value": "insight_poc"
+		},
+		{
+			"key": "user1_id",
+			"value": ""
+		},
+		{
+			"key": "user2_id",
+			"value": ""
+		},
+		{
+			"key": "sessionId_user2",
+			"value": "user2",
+			"type": "string"
+		},
+		{
+			"key": "x-tenant-id",
+			"value": "single_hardcoded_for_now",
+			"type": "string"
+		},
+		{
+			"key": "x-customer-id",
+			"value": "hardcoded_for_now",
+			"type": "string"
+		},
+		{
+			"key": "admin_id",
+			"value": ""
+		},
+		{
+			"key": "bookmarkId",
+			"value": ""
+		}
+	]
+}

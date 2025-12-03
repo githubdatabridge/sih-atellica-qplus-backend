@@ -1,0 +1,16 @@
+export { AppUserPreferencesRepository } from './AppUserPreferencesRepository';
+export { FeedbackRepository } from './FeedbackRepository';
+export { PinWallRepository } from './PinWallRepository';
+export { QlikStateRepository } from './QlikStateRepository';
+export { PinWallQlikStateRepository } from './PinWallQlikStateRepository';
+export { ActionRepository } from './ActionRepository';
+export { CommentRepository } from './CommentRepository';
+export { ReactionRepository } from './ReactionRepository';
+export { VisualizationRepository } from './VisualizationRepository';
+export { ReportRepository } from './ReportRepository';
+export { DatasetRepository } from './DatasetRepository';
+export { UserReportRepository } from './UserReportRepository';
+export { TenantRepository } from './TenantRepository';
+export { BookmarkRepository } from './BookmarkRepository';
+export { BookmarkItemRepository } from './BookmarkItemRepository';
+export { UserBookmarkRepository } from './UserBookmarkRepository';

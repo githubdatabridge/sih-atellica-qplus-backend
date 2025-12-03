@@ -1,0 +1,60 @@
+{
+    "name": "sih-atellica-qplus-backend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "prestart": "npm run tsc",
+        "test": "jest",
+        "docker-dev": "npm install && tsc-watch --onSuccess \"node build/index.js\"",
+        "compile-run": "npm run tsc && node build/index.js",
+        "build": "npm run tsc",
+        "start": "node build/index.js",
+        "watch": "tsc-watch --onSuccess \"node build/index.js\"",
+        "tsc": "tsc",
+        "win-svc-install": "npm run tsc && node ./build/service-install.js",
+        "win-svc-uninstall": "node ./build/service-uninstall.js",
+        "migration:make": "knex --knexfile ./src/database/knexfile.ts migrate:make"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@hapi/bell": "^13.0.1",
+        "@hapi/boom": "^10.0.1",
+        "@hapi/hapi": "^21.3.0",
+        "@hapi/inert": "^7.1.0",
+        "@hapi/jwt": "^3.2.0",
+        "@hapi/vision": "^7.0.3",
+        "axios": "^1.5.1",
+        "change-case": "^4.1.2",
+        "dotenv": "^10.0.0",
+        "hapi-decorators": "^2.0.0",
+        "hapi-dev-errors": "^4.0.0",
+        "hapi-swagger": "^17.2.1",
+        "joi": "^17.4.2",
+        "knex": "^3.1.0",
+        "knex-paginate": "^3.0.2",
+        "openid-client": "^4.9.1",
+        "pg": "^8.7.1",
+        "pluralize": "^8.0.0",
+        "qs": "^6.9.4",
+        "reflect-metadata": "^0.1.13",
+        "socket.io": "^4.7.4",
+        "tsyringe": "^4.1.0",
+        "underscore": "^1.13.1",
+        "uuid": "^9.0.1",
+        "winston": "^3.3.3",
+        "winston-daily-rotate-file": "^4.5.5"
+    },
+    "devDependencies": {
+        "@types/node": "^20.11.17",
+        "@types/uuid": "^9.0.8",
+        "ts-node": "^10.9.1",
+        "tsc-watch": "^6.0.4",
+        "typescript": "^5.3.3"
+    },
+    "engines": {
+        "npm": ">=9.0.0 <10.8.0",
+        "node": ">=16.5.0 <21.0.0"
+    }
+}

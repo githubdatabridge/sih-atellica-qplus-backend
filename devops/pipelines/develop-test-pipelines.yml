@@ -1,0 +1,101 @@
+# Docker
+# Build image
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+resources:
+  repositories:
+  - repository: migrationRepo # The name used to reference this repository in the checkout step
+    type: github
+    endpoint: githubdatabridge
+    name: githubdatabridge/db-insight-migrations
+    ref: 'refs/heads/develop'
+parameters:
+    - name: testFiles
+      type: object
+      default: 
+          - sih-atellica-qplus-backend-comments.postman_collection.json
+          - sih-atellica-qplus-backend.postman_collection.json
+          - sih-atellica-qplus-backend-bookmarks.postman_collection.json
+
+trigger: 
+    - develop
+
+pr: 
+  - develop
+    
+variables:
+    dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile.azure'
+    tag: '$(Build.BuildId)'
+
+    # Agent VM image name
+    vmImageName: 'ubuntu-latest'
+
+stages:
+    - stage: Build
+      displayName: Build
+      jobs:
+          - job: Build
+            displayName: Build
+            pool:
+                vmImage: $(vmImageName)
+            steps:
+                - checkout: self
+                - checkout: migrationRepo
+                - task: Docker@2
+                  displayName: Build docker image APP API
+                  inputs:
+                      command: 'build'
+                      dockerfile: $(Build.SourcesDirectory)/sih-atellica-qplus-backend/Dockerfile.azure
+                      tags: test
+                      repository: 'app-api-image'
+                - task: Docker@2
+                  displayName: Build docker image MIGRATIONS
+                  inputs:
+                      command: 'build'
+                      dockerfile: $(Build.SourcesDirectory)/db-insight-migrations/Dockerfile.azure
+                      tags: test
+                      repository: 'migrations-image'
+                - task: Bash@3
+                  displayName: Save Docker Image app-api-image
+                  inputs:
+                    targetType: 'inline'
+                    script: |
+                     mkdir $(Pipeline.Workspace)/images
+                     docker save app-api-image:test -o $(Pipeline.Workspace)/images/app-api-image.tar
+                     docker save migrations-image:test -o $(Pipeline.Workspace)/images/migrations-image.tar
+                - task: PublishPipelineArtifact@1
+                  inputs:
+                        targetPath: '$(Pipeline.Workspace)/images'
+                        artifact: 'images'
+                        publishLocation: 'pipeline'
+    - stage: Test
+      displayName: Test
+      variables:
+      - name: test_files
+        value: |
+         test
+         test2      
+      jobs:
+          - job: Test
+            displayName: Test
+            pool:
+                vmImage: $(vmImageName)
+            steps:
+                - checkout: self
+                  path: s
+                - download: current
+                  artifact: images
+                - task: Bash@3
+                  displayName: Load Docker Image
+                  inputs:
+                    targetType: 'inline'
+                    script: |
+                     docker load --input /home/vsts/work/1/images/app-api-image.tar
+                     docker load --input /home/vsts/work/1/images/migrations-image.tar
+                    
+                - template: ./test_template.yml 
+                  parameters:
+                    param: ${{ parameters.testFiles }}
+                - task: PublishPipelineArtifact@1
+                  inputs:
+                        targetPath: '$(Build.SourcesDirectory)/tests/Results'
+                        artifact: 'html_tests'
