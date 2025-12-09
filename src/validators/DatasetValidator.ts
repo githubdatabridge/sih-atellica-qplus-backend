@@ -9,7 +9,7 @@ import * as CommonValidator from './CommonValidator';
 const QItem = Joi.object({
     qId: Joi.string().required().not(null),
     label: Joi.string().optional().allow(null),
-    meta: Joi.object().optional().allow(null),
+    meta: Joi.object().optional().allow(null).label('QItemMetaSchema'),
 }).label('QItemSchema');
 
 const ChartTypeItem = Joi.object({
@@ -26,23 +26,27 @@ const ChartTypeItem = Joi.object({
     properties: Joi.object()
         .when('isBaseChart', {
             is: false,
-            then: Joi.object().required().not({}),
+            then: Joi.object().required().not({}).label('ChartTypePropertiesSchema'),
         })
-        .optional(),
+        .optional()
+        .label('ChartTypePropertiesSchema'),
 }).label('ChartTypeItemSchema');
 
 const ChartTypeChangeItem = ChartTypeItem.keys({
     mark: Joi.string()
         .optional()
         .valid('create', 'remove', 'changeName', 'none')
-        .default('none'),
-    markParam: Joi.string().when('mark', [
-        {
-            is: 'changeName',
-            then: Joi.string().required(),
-            otherwise: Joi.string().optional(),
-        },
-    ]),
+        .default('none')
+        .label('ChartTypeMarkEnum'),
+    markParam: Joi.string()
+        .when('mark', [
+            {
+                is: 'changeName',
+                then: Joi.string().required(),
+                otherwise: Joi.string().optional(),
+            },
+        ])
+        .label('ChartTypeMarkParamString'),
 }).label('ChartTypeChangeItemSchema');
 
 const createRequest = Joi.object({
@@ -78,7 +82,8 @@ const createRequest = Joi.object({
             })
         )
         .min(1)
-        .label('ChartTypeItemArraySchema'),
+        .label('ChartTypeItemArraySchema')
+        .description('Array of chart types with default base chart types'),
     tags: CommonValidator.arrayOfString.optional().default([]),
     color: Joi.string()
         .optional()
@@ -119,7 +124,8 @@ const updateRequest = Joi.object({
             })
         )
         .min(1)
-        .label('ChartTypeChangeItemArraySchema'),
+        .label('ChartTypeChangeItemArraySchema')
+        .description('Array of chart types with default base chart types'),
     tags: CommonValidator.arrayOfString.optional().default([]),
     color: Joi.string()
         .optional()
@@ -131,7 +137,7 @@ const dataset = Joi.object({
     id: Joi.number().required(),
     appUserId: Joi.string().required(),
     qlikAppId: Joi.string().required(),
-    qlikApp: Joi.object().optional().allow(null),
+    qlikApp: Joi.object().optional().allow(null).label('QlikAppSchema'),
     title: Joi.string().required(),
     customerId: Joi.string().required(),
     tenantId: Joi.string().required(),

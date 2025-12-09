@@ -1,6 +1,6 @@
 import { Knex } from 'knex';
 import { commonColumns } from './20200511074854-create-actions';
-const tableName = 'temp_tenants';
+const tableName = 'tenants';
 
 export async function up(knex: Knex): Promise<void> {
     return await knex.schema.createTable(tableName, (table) => {

@@ -145,7 +145,7 @@ export class VisualizationController extends BaseController {
         validate: {
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             headers: headerValidator,
         },
         auth: {
@@ -280,7 +280,7 @@ export class VisualizationController extends BaseController {
         validate: {
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             headers: headerValidator,
         },
         auth: {

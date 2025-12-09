@@ -141,7 +141,7 @@ export class FeedbackController extends BaseController {
         validate: {
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             headers: headerValidator,
         },
         auth: {
@@ -210,7 +210,7 @@ export class FeedbackController extends BaseController {
             payload: FeedbackValidator.update,
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             headers: headerValidator,
         },
         auth: {
@@ -278,7 +278,7 @@ export class FeedbackController extends BaseController {
         validate: {
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             headers: headerValidator,
         },
         auth: {

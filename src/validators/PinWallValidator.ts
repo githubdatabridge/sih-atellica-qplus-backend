@@ -41,7 +41,8 @@ const response = Joi.object({
     qlikState: QlikStateValidator.qlikStateArray
         .optional()
         .allow(null)
-        .allow({}),
+        .allow({})
+        .label('QlikStateArrayRequest'),
 }).label('PinWallResponse');
 
 const createRequest = Joi.object({
@@ -55,7 +56,8 @@ const createRequest = Joi.object({
     qlikState: QlikStateValidator.qlikStateCreateArray
         .optional()
         .allow(null)
-        .allow({}),
+        .allow({})
+        .label('QlikStateCreateArrayRequest'),
 }).label('PinWallRequest');
 
 const update = Joi.object({
@@ -69,7 +71,8 @@ const update = Joi.object({
     qlikState: QlikStateValidator.qlikStateCreateArray
         .optional()
         .allow(null)
-        .allow({}),
+        .allow({})
+        .label('QlikStateCreateArrayRequest'),
 }).label('PinWallUpdateRequest');
 
 const responseArray = Joi.array()

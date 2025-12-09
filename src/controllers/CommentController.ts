@@ -604,8 +604,10 @@ export class CommentController extends BaseController {
         tags: ['api', 'comments'],
         response: {
             schema: Joi.object({
-                count: Joi.number(),
-                selectionHashes: Joi.array().items(Joi.number().allow(null)),
+                count: Joi.number().label('CommentCountNumber'),
+                selectionHashes: Joi.array()
+                    .items(Joi.number().allow(null).label('SelectionHashNumber'))
+                    .label('SelectionHashesArraySchema'),
             }).label('CommentCountResponse'),
         },
         validate: {
@@ -685,8 +687,10 @@ export class CommentController extends BaseController {
         tags: ['api', 'comments'],
         response: {
             schema: Joi.object({
-                count: Joi.number(),
-                selectionHashes: Joi.array().items(Joi.number().allow(null)),
+                count: Joi.number().label('CommentCountNumber'),
+                selectionHashes: Joi.array()
+                    .items(Joi.number().allow(null).label('SelectionHashNumber'))
+                    .label('SelectionHashesArraySchema'),
             }).label('CommentCountResponse'),
         },
         validate: {

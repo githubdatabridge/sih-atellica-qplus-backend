@@ -242,7 +242,7 @@ export class ReportController extends BaseController {
         validate: {
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             headers: headerValidator,
         },
         auth: {
@@ -295,7 +295,7 @@ export class ReportController extends BaseController {
         validate: {
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             payload: ReportValidator.updateRequest,
             headers: headerValidator,
         },
@@ -342,7 +342,7 @@ export class ReportController extends BaseController {
         validate: {
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             headers: headerValidator,
         },
         auth: {
@@ -387,7 +387,7 @@ export class ReportController extends BaseController {
             payload: ReportShareValidator.shareRequest,
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             headers: headerValidator,
         },
         auth: {
@@ -438,7 +438,7 @@ export class ReportController extends BaseController {
             payload: ReportShareValidator.shareRequest,
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             headers: headerValidator,
         },
         auth: {
@@ -486,7 +486,7 @@ export class ReportController extends BaseController {
         validate: {
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             headers: headerValidator,
         },
         auth: {
@@ -533,7 +533,7 @@ export class ReportController extends BaseController {
         validate: {
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             query: paginatorQueryValidator.options({ allowUnknown: true }),
             headers: headerValidator,
         },
@@ -613,7 +613,7 @@ export class ReportController extends BaseController {
         validate: {
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             payload: ReportValidator.patchRequest,
             headers: headerValidator,
         },
@@ -663,10 +663,10 @@ export class ReportController extends BaseController {
         validate: {
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             query: Joi.object({
-                includeMe: Joi.bool().optional().default(true),
-            }),
+                includeMe: Joi.bool().optional().default(true).label('IncludeMeBoolParam'),
+            }).label('IncludeMeQueryParams'),
             headers: headerValidator,
         },
         auth: {
@@ -716,7 +716,7 @@ export class ReportController extends BaseController {
         validate: {
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             headers: headerValidator,
         },
         auth: {

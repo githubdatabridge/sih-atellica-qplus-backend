@@ -5,7 +5,7 @@ import * as QlikStateValidator from './QlikStateValidator';
 import * as AppUserValidator from './AppUserValidator';
 
 const createRequest = Joi.object({
-    content: Joi.object().required(),
+    content: Joi.object().required().label('ReportContentSchema'),
     title: Joi.string().required(),
     description: Joi.string().optional(),
     isFavourite: Joi.boolean().optional().default(false),
@@ -13,12 +13,15 @@ const createRequest = Joi.object({
         .required(),
     isPinwallable: Joi.boolean().required(),
     datasetId: Joi.number().positive().required(),
-    qlikState: QlikStateValidator.qlikStateCreate.optional().allow(null),
+    qlikState: QlikStateValidator.qlikStateCreate
+        .optional()
+        .allow(null)
+        .label('QlikStateCreateRequest'),
     pageId: Joi.string().required(),
 }).label('ReportRequest');
 
 const updateRequest = Joi.object({
-    content: Joi.object().required(),
+    content: Joi.object().required().label('ReportContentSchema'),
     title: Joi.string().required(),
     description: Joi.string().optional(),
     isFavourite: Joi.boolean().required(),
@@ -32,7 +35,7 @@ const updateRequest = Joi.object({
 }).label('ReportUpdate');
 
 const patchRequest = Joi.object({
-    content: Joi.object().optional(),
+    content: Joi.object().optional().label('ReportContentSchema'),
     title: Joi.string().optional(),
     description: Joi.string().optional(),
     visualizationType: Joi.string()
@@ -51,7 +54,7 @@ const patchRequest = Joi.object({
 const reportBase = Joi.object({
     id: Joi.number().required(),
     appUserId: Joi.string().optional().allow(null),
-    content: Joi.object().required(),
+    content: Joi.object().required().label('ReportContentSchema'),
     title: Joi.string().required(),
     description: Joi.string().optional().allow(null),
     tenantId: Joi.string().required(),
@@ -86,7 +89,7 @@ const report = reportBase
         qlikState: QlikStateValidator.qlikState
             .optional()
             .allow(null)
-            .label('QlikStateResponse'),
+            .label('QlikStateSchema'),
     })
     .label('ReportSchema');
 

@@ -197,7 +197,7 @@ export class DatasetController extends BaseController {
         validate: {
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             headers: headerValidator,
         },
         auth: {
@@ -264,10 +264,10 @@ export class DatasetController extends BaseController {
             payload: DatasetValidator.updateRequest,
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             query: Joi.object({
-                cascade: Joi.bool().default(false),
-            }),
+                cascade: Joi.bool().default(false).label('CascadeBoolParam'),
+            }).label('CascadeQueryParams'),
             headers: headerValidator,
         },
         auth: {
@@ -320,10 +320,10 @@ export class DatasetController extends BaseController {
         validate: {
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             query: Joi.object({
-                cascade: Joi.bool().default(false),
-            }),
+                cascade: Joi.bool().default(false).label('CascadeBoolParam'),
+            }).label('CascadeQueryParams'),
             headers: headerValidator,
         },
         auth: {

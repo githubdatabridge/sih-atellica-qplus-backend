@@ -65,7 +65,7 @@ services:
                 --env-var sessionId_admin=admin \
                 --env-var baseUrl=http://qplus-app-api:8080 \
                 --env-var x-vp=localhost \
-                --env-var x-app-name=insight_poc \
+                --env-var x-app-name=qplus \
                 --env-var x-tenant-id=SIHPOCWEB \
                 --env-var x-customer-id=SIH \
                 --reporters cli,junit,htmlextra \

@@ -1,0 +1,33 @@
+[
+    {
+        "id": "sih",
+        "name": "sih",
+        "host": "qs-internal.databridge.ch",
+        "port": 4242,
+        "customers": [
+            {
+                "id": "sih",
+                "name": "sih",
+                "apps": [
+                    {
+                        "id": "qplus",
+                        "name": "qplus",
+                        "qlikApps": [
+                            {
+                                "id": "05cf243f-8413-42a2-a173-7f6b94c8a08e",
+                                "name": "compliance"
+                            },
+                            {
+                                "id": "ac8fd1a5-8a29-432a-9126-d00dacddbaca",
+                                "name": "audit"
+                            }
+                        ],
+                        "callbackUrl": "https://localhost:7005/qlik/dashboards/overview"
+                    }
+                ]
+            }
+        ],
+        "authType": "windows",
+        "idProvider": null
+    }
+]

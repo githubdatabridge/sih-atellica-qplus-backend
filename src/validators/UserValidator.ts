@@ -7,7 +7,7 @@ const userResponse = Joi.object({
     userDirectory: Joi.string().optional(),
     email: Joi.string().optional().allow('').default(''),
     status: Joi.string().optional(),
-    roles: Joi.array().optional(),
+    roles: Joi.array().optional().label('UserRolesArraySchema'),
 }).label('UserResponse');
 
 const usersResponse = Joi.array()

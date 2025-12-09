@@ -24,7 +24,8 @@ const action = Joi.object({
     user: AppUserValidator.response.optional(),
     type: Joi.string()
         .required()
-        .valid(...Object.values(ActionType), 'NONE'),
+        .valid(...Object.values(ActionType), 'NONE')
+        .label('ActionTypeEnum'),
 }).label('ActionSchema');
 
 const createRequest = Joi.object({
@@ -33,7 +34,8 @@ const createRequest = Joi.object({
     reportId: Joi.number(),
     type: Joi.string()
         .required()
-        .valid(...Object.values(ActionType)),
+        .valid(...Object.values(ActionType))
+        .label('ActionTypeEnum'),
 })
     .xor('commentId', 'reportId')
     .label('ActionCreateRequest');

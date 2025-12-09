@@ -12,9 +12,9 @@ const paginationValidator = Joi.object({
 }).label('PaginationSchema');
 
 const restfulOperatorsValidator = Joi.object({
-    filter: Joi.object().optional(),
-    search: Joi.object().optional(),
-    orderBy: Joi.array().optional(),
+    filter: Joi.object().optional().label('FilterCriteriaSchema'),
+    search: Joi.object().optional().label('SearchCriteriaSchema'),
+    orderBy: Joi.array().optional().label('OrderByArraySchema'),
 }).label('RestfulOperatorsSchema');
 
 const baseResponseValidator = Joi.object({

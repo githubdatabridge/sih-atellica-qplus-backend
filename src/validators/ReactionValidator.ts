@@ -13,7 +13,11 @@ const reaction = Joi.object({
     createdAt: Joi.date().required(),
     updatedAt: Joi.date().required(),
     deletedAt: Joi.date().required().allow(null),
-    qlikState: QlikStateValidator.qlikState.optional().allow(null).allow({}),
+    qlikState: QlikStateValidator.qlikState
+        .optional()
+        .allow(null)
+        .allow({})
+        .label('QlikStateSchema'),
     qlikStateId: Joi.number().required().allow(null),
     customerId: Joi.string().required(),
     tenantId: Joi.string().required(),
@@ -26,13 +30,19 @@ const createRequest = Joi.object({
     scope: Joi.string().required().not(null),
     commentId: Joi.number().optional().default(null),
     visualizationId: Joi.number().optional().default(null),
-    qlikState: QlikStateValidator.qlikStateCreate.optional().allow(null),
+    qlikState: QlikStateValidator.qlikStateCreate
+        .optional()
+        .allow(null)
+        .label('QlikStateCreateRequest'),
 }).label('ReactionCreateRequest');
 
 const updateRequest = Joi.object({
     score: Joi.number().optional(),
     scope: Joi.string().optional(),
-    qlikState: QlikStateValidator.qlikStateCreate.optional().allow(null),
+    qlikState: QlikStateValidator.qlikStateCreate
+        .optional()
+        .allow(null)
+        .label('QlikStateUpdateRequest'),
 }).label('ReactionUpdateRequest');
 
 const reactions = baseResponseValidator

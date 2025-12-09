@@ -83,7 +83,7 @@ export class QesAuthProvider extends BaseQAuthProvider {
             tenant.authType
         )[0];
 
-        const qlikAppName = `${app.id}_qlikapp`;
+        const qlikAppName = `${app.id}`;
         const vp = headers['x-vp'];
 
         const qlikSessionId = state[`${qlikSessionHeader}-${vp}`];

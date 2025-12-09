@@ -16,7 +16,8 @@ const response = Joi.object({
         .valid('DE')
         .valid('IT')
         .valid('FR')
-        .not(null),
+        .not(null)
+        .label('LanguageEnum'),
     additionalPreferences: Joi.object()
         .allow(null)
         .label('AppUserPreferenceAdditionalSchema'),
@@ -38,7 +39,8 @@ const request = Joi.object({
         .valid('DE')
         .valid('IT')
         .valid('FR')
-        .not(null),
+        .not(null)
+        .label('LanguageEnum'),
     additionalPreferences: Joi.object()
         .allow(null)
         .label('AppUserPreferenceAdditionalSchema'),

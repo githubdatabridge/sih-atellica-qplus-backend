@@ -11,7 +11,11 @@ const response = Joi.object({
 const CustomProperty = Joi.object({
     key: Joi.string().required(),
     name: Joi.string().required(),
-    values: Joi.array().items(Joi.string().required()).required().empty(),
+    values: Joi.array()
+        .items(Joi.string().required().label('CustomPropertyValueString'))
+        .required()
+        .empty()
+        .label('CustomPropertyValuesArraySchema'),
 }).label('CustomPropertySchema');
 
 const QlikUser = UserValidator.userResponse
@@ -45,7 +49,9 @@ const meResponse = Joi.object({
     vp: Joi.string().optional(),
     activeRole: Joi.string().required(),
     authProviderType: Joi.string().optional(),
-    qlikAppIds: Joi.array().items(Joi.string()),
+    qlikAppIds: Joi.array()
+        .items(Joi.string().label('QlikAppIdString'))
+        .label('QlikAppIdsArraySchema'),
 }).label('MeResponse');
 
 export { response, authQlikResponse, meResponse };

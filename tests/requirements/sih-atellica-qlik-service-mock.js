@@ -2,7 +2,7 @@
 
 const Hapi = require('@hapi/hapi');
 const users = ['user1', 'user2', 'admin'];
-const qsAppGuid = 'insight_poc_qlikapp';
+const qsAppGuid = 'qplus';
 
 const init = async () => {
     const server = Hapi.server({
@@ -40,12 +40,12 @@ const init = async () => {
                 customProperties: [
                     {
                         key: 'roles',
-                        name: 'insight_poc_role',
+                        name: 'qplus_role',
                         values: ['user'],
                     },
                     {
                         key: 'scopes',
-                        name: 'insight_poc_scopes',
+                        name: 'qplus_scopes',
                         values: ['user:default', 'datasets:read'],
                     },
                 ],

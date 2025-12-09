@@ -4,8 +4,22 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Debug Project",
-            "program": "${workspaceFolder}\\src\\index.ts",
+            "name": "Debug with ts-node (Direct TypeScript)",
+            "runtimeArgs": ["-r", "ts-node/register"],
+            "args": ["${workspaceFolder}/src/index.ts"],
+            "cwd": "${workspaceFolder}",
+            "protocol": "inspector",
+            "sourceMaps": true,
+            "console": "integratedTerminal",
+            "env": {
+                "NODE_ENV": "development"
+            }
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Project (Compiled)",
+            "program": "${workspaceFolder}/src/index.ts",
             "preLaunchTask": "npm: build",
             "sourceMaps": true,
             "smartStep": true,

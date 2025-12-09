@@ -11,14 +11,16 @@ const bookmarkItem = Joi.object({
     bookmarkId: Joi.number().required(),
     qlikStateId: Joi.number().required(),
     qlikAppId: Joi.string().required(),
-    qlikState: QlikStateValidator.qlikState.required(),
+    qlikState: QlikStateValidator.qlikState.required().label('QlikStateSchema'),
     createdAt: Joi.date().required(),
     updatedAt: Joi.date().required(),
 }).label('BookmarkItemSchema');
 
 const bookmarkItemCreate = Joi.object({
     qlikAppId: Joi.string().required(),
-    qlikState: QlikStateValidator.qlikStateCreate.required(),
+    qlikState: QlikStateValidator.qlikStateCreate
+        .required()
+        .label('QlikStateCreateRequest'),
 }).label('BookmarkItemRequest');
 
 const bookmarkItemUpdate = Joi.object({
@@ -26,28 +28,36 @@ const bookmarkItemUpdate = Joi.object({
     bookmarkId: Joi.number().optional(),
     qlikStateId: Joi.number().optional(),
     qlikAppId: Joi.string().required(),
-    qlikState: QlikStateValidator.qlikStateCreate.required(),
+    qlikState: QlikStateValidator.qlikStateCreate
+        .required()
+        .label('QlikStateUpdateRequest'),
 }).label('BookmarkItemRequest');
 
 const createRequest = Joi.object({
     name: Joi.string().max(50).required(),
     path: Joi.string().max(200).optional(),
-    meta: Joi.object().optional(),
-    bookmarkItems: Joi.array().items(bookmarkItemCreate).min(1),
+    meta: Joi.object().optional().label('BookmarkMetaSchema'),
+    bookmarkItems: Joi.array()
+        .items(bookmarkItemCreate)
+        .min(1)
+        .label('BookmarkItemsCreateArraySchema'),
 }).label('BookmarkRequest');
 
 const updateRequest = Joi.object({
     name: Joi.string().max(50).required(),
-    meta: Joi.object().optional(),
+    meta: Joi.object().optional().label('BookmarkMetaSchema'),
     path: Joi.string().max(200).optional(),
-    bookmarkItems: Joi.array().items(bookmarkItemUpdate).min(1),
+    bookmarkItems: Joi.array()
+        .items(bookmarkItemUpdate)
+        .min(1)
+        .label('BookmarkItemsUpdateArraySchema'),
 }).label('BookmarkUpdate');
 
 const bookmark = Joi.object({
     id: Joi.number().required(),
     name: Joi.string().required(),
     isPublic: Joi.boolean().required(),
-    meta: Joi.object().optional(),
+    meta: Joi.object().optional().label('BookmarkMetaSchema'),
     path: Joi.string().max(200).optional(),
     appUserId: Joi.string().optional().allow(null),
     tenantId: Joi.string().required(),
@@ -57,7 +67,9 @@ const bookmark = Joi.object({
     createdAt: Joi.date().required(),
     updatedAt: Joi.date().required(),
     deletedAt: Joi.date().optional().allow(null),
-    bookmarkItems: Joi.array().items(bookmarkItem),
+    bookmarkItems: Joi.array()
+        .items(bookmarkItem)
+        .label('BookmarkItemsArraySchema'),
 }).label('BookmarkSchema');
 
 const bookmarks = baseResponseValidator
@@ -74,9 +86,9 @@ const bookmarks = baseResponseValidator
 const shareRequest = Joi.object({
     appUserIds: Joi.array()
         .unique()
-        .items(Joi.string().required())
+        .items(Joi.string().required().label('AppUserIdString'))
         .required()
-        .label('AppUserIdsSchema')
+        .label('AppUserIdsArraySchema')
         .description('Unique array of string(guid).'),
 }).label('ShareBookmarks');
 

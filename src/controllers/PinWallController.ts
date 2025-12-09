@@ -104,7 +104,7 @@ export class PinWallController extends BaseController {
         validate: {
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             payload: PinWallValidator.update,
             headers: headerValidator,
         },
@@ -215,7 +215,7 @@ export class PinWallController extends BaseController {
         validate: {
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             headers: headerValidator,
         },
         auth: {
@@ -307,7 +307,7 @@ export class PinWallController extends BaseController {
         validate: {
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             headers: headerValidator,
         },
         auth: {
@@ -382,7 +382,7 @@ export class PinWallController extends BaseController {
         validate: {
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             headers: headerValidator,
         },
         auth: {

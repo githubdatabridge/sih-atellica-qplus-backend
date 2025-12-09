@@ -13,7 +13,7 @@ const tableNames = [
     'reports',
     'users_reports',
     'logs',
-    'temp_tenants',
+    'tenants',
     'bookmarks',
     'bookmark_items',
     'users_bookmarks'

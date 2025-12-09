@@ -17,10 +17,14 @@ const comment = Joi.object({
     updatedAt: Joi.date().required(),
     deletedAt: Joi.date().optional().allow(null),
     comments: Joi.array()
-        .items(Joi.object().label('ObjectSchema'))
+        .items(Joi.object().label('CommentNestedSchema'))
         .optional()
-        .label('ObjectArraySchema'),
-    qlikState: QlikStateValidator.qlikState.optional().allow(null).allow({}),
+        .label('CommentNestedArraySchema'),
+    qlikState: QlikStateValidator.qlikState
+        .optional()
+        .allow(null)
+        .allow({})
+        .label('QlikStateSchema'),
     customerId: Joi.string().required(),
     tenantId: Joi.string().required(),
     appId: Joi.string().required(),
@@ -31,7 +35,10 @@ const comment = Joi.object({
         .label('CommentVisualizationSchema'),
     report: ReportValidator.reportComment.optional(),
     parentComment: Joi.object().optional().label('CommentParentSchema'),
-    reactions: Joi.array().items(Joi.object().label('ObjectSchema')).optional(),
+    reactions: Joi.array()
+        .items(Joi.object().label('ReactionSummarySchema'))
+        .optional()
+        .label('ReactionSummaryArraySchema'),
 }).label('CommentResponse');
 
 const createRequest = Joi.object({
@@ -40,7 +47,10 @@ const createRequest = Joi.object({
     commentId: Joi.number().optional().allow(null).not(0),
     visualizationId: Joi.number(),
     reportId: Joi.number(),
-    qlikState: QlikStateValidator.qlikStateCreate.optional().allow(null),
+    qlikState: QlikStateValidator.qlikStateCreate
+        .optional()
+        .allow(null)
+        .label('QlikStateCreateRequest'),
 })
     .xor('visualizationId', 'reportId')
     .label('CommentRequest');
@@ -48,7 +58,10 @@ const createRequest = Joi.object({
 const updateRequest = Joi.object({
     content: Joi.string().optional(),
     scope: Joi.string().optional(),
-    qlikState: QlikStateValidator.qlikStateCreate.optional().allow(null),
+    qlikState: QlikStateValidator.qlikStateCreate
+        .optional()
+        .allow(null)
+        .label('QlikStateUpdateRequest'),
 }).label('CommentUpdateRequest');
 
 const comments = baseResponseValidator

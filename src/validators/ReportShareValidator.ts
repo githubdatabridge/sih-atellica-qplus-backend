@@ -4,9 +4,9 @@ import * as AppUserValidator from './AppUserValidator';
 const shareRequest = Joi.object({
     appUserIds: Joi.array()
         .unique()
-        .items(Joi.string().required())
+        .items(Joi.string().required().label('AppUserIdString'))
         .required()
-        .label('AppUserIdsSchema')
+        .label('AppUserIdsArraySchema')
         .description('Unique array of string(guid).'),
 }).label('ShareReportRequest');
 

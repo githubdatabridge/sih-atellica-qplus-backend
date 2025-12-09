@@ -205,7 +205,7 @@ export class BookmarkController extends BaseController {
         validate: {
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             headers: headerValidator,
         },
         auth: {
@@ -252,7 +252,7 @@ export class BookmarkController extends BaseController {
             payload: BookmarkValidator.updateRequest,
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             headers: headerValidator,
             failAction: (r, h, err) => {
                 throw err;
@@ -309,10 +309,10 @@ export class BookmarkController extends BaseController {
         validate: {
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             query: Joi.object({
-                cascade: Joi.bool().default(false),
-            }),
+                cascade: Joi.bool().default(false).label('CascadeBoolParam'),
+            }).label('CascadeQueryParams'),
             headers: headerValidator,
         },
         auth: {
@@ -362,7 +362,7 @@ export class BookmarkController extends BaseController {
             payload: BookmarkValidator.shareRequest,
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             headers: headerValidator,
         },
         auth: {
@@ -413,7 +413,7 @@ export class BookmarkController extends BaseController {
             payload: BookmarkValidator.shareRequest,
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             headers: headerValidator,
         },
         auth: {
@@ -461,7 +461,7 @@ export class BookmarkController extends BaseController {
         validate: {
             params: Joi.object({
                 id: Joi.number().required(),
-            }),
+            }).label('IdParams'),
             headers: headerValidator,
         },
         auth: {

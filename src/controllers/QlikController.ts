@@ -37,13 +37,15 @@ export class QlikController extends BaseController {
         tags: ['api', 'login'],
         validate: {
             query: Joi.object({
-                returnTo: Joi.string().optional(),
-                tenantId: Joi.string().optional(),
-                customerId: Joi.string().optional(),
-                mashupAppName: Joi.string().optional(),
-                code: Joi.string().optional(),
-                state: Joi.string().optional(),
-            }).options({ allowUnknown: true }),
+                returnTo: Joi.string().optional().label('ReturnToUrlString'),
+                tenantId: Joi.string().optional().label('TenantIdString'),
+                customerId: Joi.string().optional().label('CustomerIdString'),
+                mashupAppName: Joi.string().optional().label('MashupAppNameString'),
+                code: Joi.string().optional().label('AuthCodeString'),
+                state: Joi.string().optional().label('AuthStateString'),
+            })
+                .options({ allowUnknown: true })
+                .label('QlikAuthQueryParams'),
         },
         plugins: {
             'hapi-swagger': {

@@ -54,17 +54,17 @@ export class ConfigService {
         [ENV_PARAMS.HOST]: '0.0.0.0',
         [ENV_PARAMS.PORT]: 8080,
         [ENV_PARAMS.SSL]: false,
-        [ENV_PARAMS.TITLE]: 'Insight APP Api Service',
+        [ENV_PARAMS.TITLE]: 'SIH Qplus Backend',
         [ENV_PARAMS.VERSION]: '1',
 
-        [ENV_PARAMS.APP_NAME]: 'Insight',
+        [ENV_PARAMS.APP_NAME]: 'SihQplusApi',
 
         [ENV_PARAMS.DB_HOST]: 'localhost',
         [ENV_PARAMS.DB_PORT]: '5432',
         [ENV_PARAMS.DB_USER]: 'root',
         [ENV_PARAMS.DB_PASS]: 'root',
-        [ENV_PARAMS.DB_DATABASE]: 'databridge_dev',
-        [ENV_PARAMS.DB_SCHEMA]: 'qplus_api',
+        [ENV_PARAMS.DB_DATABASE]: 'sih_qplus',
+        [ENV_PARAMS.DB_SCHEMA]: 'qplus',
         [ENV_PARAMS.DB_SSL]: false,
 
         [ENV_PARAMS.QLIK_SERVICE_HOST]: 'http://localhost',
@@ -85,7 +85,7 @@ export class ConfigService {
         [ENV_PARAMS.LOG_DB_TABLE_NAME]: 'logs',
 
         [ENV_PARAMS.TENANT_FILE_PATH]: 'src/',
-        [ENV_PARAMS.TENANT_FILE_NAME]: 'tenants_develop.json',
+        [ENV_PARAMS.TENANT_FILE_NAME]: 'configuration.json',
         [ENV_PARAMS.TENANT_FILE_ONLY]: false,
 
         [ENV_PARAMS.STATE_SECRET]: 'very_secret_secret_very_secret_secret',

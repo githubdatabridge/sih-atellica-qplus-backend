@@ -3,7 +3,7 @@ import { MashupApp, Tenant } from '../entities';
 import { delay, inject, singleton } from 'tsyringe';
 import * as fs from 'fs';
 import { Errors } from '../lib';
-import { TempRepository } from './TempRepository';
+import { TenantDataRepository } from './TenantDataRepository';
 
 const RELOAD_INTERVAL = 5000;
 
@@ -15,7 +15,7 @@ export class TenantRepository {
     private useFileOnly: boolean;
     constructor(
         private configService?: ConfigService,
-        private tempRepository?: TempRepository,
+        private tenantDataRepository?: TenantDataRepository,
         @inject(delay(() => LogService)) private logService?: LogService
     ) {
         const fileDirPath = configService.get('TENANT_FILE_PATH');
@@ -26,7 +26,7 @@ export class TenantRepository {
     }
 
     async init() {
-        const fromDb = await this.tempRepository.getAll();
+        const fromDb = await this.tenantDataRepository.getAll();
         if (!fromDb || !fromDb.data || !fromDb.data[0] || this.useFileOnly) {
             try {
                 const data = await fs.promises.readFile(
@@ -50,7 +50,7 @@ export class TenantRepository {
             }
 
             if (!this.useFileOnly) {
-                const result = await this.tempRepository.create({
+                const result = await this.tenantDataRepository.create({
                     id: 1,
                     data: { array: this.tenants },
                 });
@@ -141,7 +141,7 @@ export class TenantRepository {
                 await fs.promises.readFile(this.fileFullName, 'utf8')
             );
         } else {
-            const fromDb = await this.tempRepository.getAll();
+            const fromDb = await this.tenantDataRepository.getAll();
             data = fromDb.data[0].data.array;
         }
         return data;

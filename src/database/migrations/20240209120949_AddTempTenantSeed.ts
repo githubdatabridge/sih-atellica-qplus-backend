@@ -3,7 +3,8 @@ import type { Knex } from 'knex';
 const data = {
     array: [{
         authType: 'windows',
-        name: 'local 1',
+        id: 'sih',
+        name: 'sih',
         customers: [
             {
                 apps: [
@@ -13,23 +14,22 @@ const data = {
                         qlikApps: [
                             {
                                 id: '05cf243f-8413-42a2-a173-7f6b94c8a08e',
-                                name: 'compliments',
+                                name: 'compliance',
                             },
                             {
                                 id: 'ac8fd1a5-8a29-432a-9126-d00dacddbaca',
                                 name: 'audit',
                             },
                         ],
-                        id: 'insight_poc',
-                        name: 'insight_poc',
+                        id: 'qplus',
+                        name: 'qplus',
                     },
                 ],
-                id: 'SIH',
-                name: 'customer 2',
+                id: 'sih',
+                name: 'sih',
             },
         ],
-        id: 'SIHPOCWEB',
-        host: 'qs-internal.databridge.ch',
+         host: 'qs-internal.databridge.ch',
         idProvider: null,
         port: 4242,
     }]
@@ -42,7 +42,7 @@ interface ITempTenant {
     updatedAt: Date;
 }
 
-const tableName = 'temp_tenants';
+const tableName = 'tenants';
 export async function up(knex: Knex): Promise<void> {
     var current = (await knex(tableName).where({ id: 1 }).first<ITempTenant>()) ;
     if (!current) {
