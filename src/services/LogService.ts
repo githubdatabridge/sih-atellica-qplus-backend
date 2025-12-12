@@ -44,7 +44,7 @@ export class LogService {
             }),
         ];
 
-        if (process.platform === 'win32') {
+        if (process.platform === 'win32' && process.env.NODE_ENV === 'production') {
             const WinstonWinEventLogger =
                 require('../lib/log/winston-win-event-logger').WinstonWinEventLogger;
             transportsToEnable.push(

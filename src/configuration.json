@@ -22,7 +22,7 @@
                                 "name": "audit"
                             }
                         ],
-                        "callbackUrl": "https://localhost:7005/qlik/dashboards/overview"
+                        "callbackUrl": "https://local.databridge.ch:7005/qlik/dashboards/overview"
                     }
                 ]
             }

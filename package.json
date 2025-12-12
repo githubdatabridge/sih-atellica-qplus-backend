@@ -14,7 +14,12 @@
         "tsc": "tsc",
         "win-svc-install": "npm run tsc && node ./build/service-install.js",
         "win-svc-uninstall": "node ./build/service-uninstall.js",
-        "migration:make": "knex --knexfile ./src/database/knexfile.ts migrate:make"
+        "migration:create": "knex --knexfile ./src/database/knexfile.ts migrate:make",
+        "migration:up": "knex --knexfile ./src/database/knexfile.ts migrate:up",
+        "migration:down": "knex --knexfile ./src/database/knexfile.ts migrate:down",
+        "migration:latest": "knex --knexfile ./src/database/knexfile.ts migrate:latest",
+        "migration:rollback": "knex --knexfile ./src/database/knexfile.ts migrate:rollback"
+
     },
     "author": "",
     "license": "ISC",

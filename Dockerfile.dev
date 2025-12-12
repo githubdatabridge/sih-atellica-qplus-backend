@@ -1,9 +1,10 @@
-FROM node:14-alpine
+FROM node:20-alpine
 RUN npm install -g typescript ts-node ts-lint
 WORKDIR /usr/src/app
-COPY ./package*.json ./
+COPY ./sih-atellica-qplus-backend/package*.json ./
 RUN npm install npm -g
 RUN npm install
-COPY . .
+COPY ./sih-atellica-qplus-backend .
+COPY ./certificates ../certificates
 EXPOSE 8080
 CMD ["npm", "run", "docker-dev"]
