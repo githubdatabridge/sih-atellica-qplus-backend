@@ -1,5 +1,6 @@
 import { DbService } from '../lib/services';
 import * as axios from 'axios';
+import * as https from 'https';
 import {
     QlikIntegrationCreateRequest,
     QlikTaskStartRequest,
@@ -14,10 +15,17 @@ import {
 import { container, injectable } from 'tsyringe';
 import { ConfigService, QlikUserCacheService } from '.';
 
+// HTTPS agent that accepts self-signed certificates for local development
+const httpsAgent = new https.Agent({
+    rejectUnauthorized: false,
+});
+
 @injectable()
 export class QlikService extends DbService {
     private apiKey: string;
     private cacheService: QlikUserCacheService;
+    private axiosInstance: axios.AxiosInstance;
+
     constructor(configService: ConfigService) {
         const host = configService.get('QLIK_SERVICE_HOST');
         const port = configService.get('QLIK_SERVICE_PORT');
@@ -25,12 +33,17 @@ export class QlikService extends DbService {
         super(host, port);
         this.apiKey = configService.get('API_KEY') as string;
         this.cacheService = container.resolve(QlikUserCacheService);
+
+        // Create axios instance with HTTPS agent for self-signed certificates
+        this.axiosInstance = axios.default.create({
+            httpsAgent,
+        });
     }
 
     async onboard(authHeader: string, data: QlikIntegrationCreateRequest) {
         const url = `${this.getUrl()}/integration`;
         try {
-            const response = await axios.default.post(url, data, {
+            const response = await this.axiosInstance.post(url, data, {
                 headers: {
                     Authorization: authHeader,
                     'x-api-key': this.apiKey,
@@ -46,7 +59,7 @@ export class QlikService extends DbService {
     async offboard(authHeader: string, extId: string, data: any) {
         const url = `${this.getUrl()}/integration/${extId}`;
         try {
-            const response = await axios.default.delete(url, {
+            const response = await this.axiosInstance.delete(url, {
                 data,
                 headers: {
                     Authorization: authHeader,
@@ -67,7 +80,7 @@ export class QlikService extends DbService {
     ) {
         const url = `${this.getUrl()}/app/attach?appId=${qlikAppGuid}`;
         try {
-            const response = await axios.default.post(url, data, {
+            const response = await this.axiosInstance.post(url, data, {
                 headers: {
                     Authorization: authHeader,
                     'x-api-key': this.apiKey,
@@ -86,7 +99,7 @@ export class QlikService extends DbService {
     ) {
         const url = `${this.getUrl()}/app/remove/attachment?appId=${qlikAppGuid}`;
         try {
-            const response = await axios.default.delete(url, {
+            const response = await this.axiosInstance.delete(url, {
                 data,
                 headers: {
                     Authorization: authHeader,
@@ -105,7 +118,7 @@ export class QlikService extends DbService {
     async removeApp(authHeader: string = '', data) {
         const url = `${this.getUrl()}/app/remove`;
         try {
-            const response = await axios.default.delete(url, {
+            const response = await this.axiosInstance.delete(url, {
                 data,
                 headers: {
                     Authorization: authHeader,
@@ -122,7 +135,7 @@ export class QlikService extends DbService {
     async startTask(authHeader: string = '', data: QlikTaskStartRequest) {
         const url = `${this.getUrl()}/task/start`;
         try {
-            const response = await axios.default.post(url, data, {
+            const response = await this.axiosInstance.post(url, data, {
                 headers: {
                     Authorization: authHeader,
                     'x-api-key': this.apiKey,
@@ -138,7 +151,7 @@ export class QlikService extends DbService {
     async statusTask(authHeader: string = '', data: QlikTaskStatusRequest) {
         const url = `${this.getUrl()}/task/status`;
         try {
-            const response = await axios.default.post(url, data, {
+            const response = await this.axiosInstance.post(url, data, {
                 headers: {
                     Authorization: authHeader,
                     'x-api-key': this.apiKey,
@@ -155,7 +168,7 @@ export class QlikService extends DbService {
         const url = `${this.getUrl()}/user/auth?sync=${sync}&erase=${erase}`;
         console.log('Qlik Auth', authHeader, JSON.stringify(data), sync, url);
         try {
-            const response = await axios.default.post(url, data, {
+            const response = await this.axiosInstance.post(url, data, {
                 headers: {
                     Authorization: authHeader,
                     'x-api-key': this.apiKey,
@@ -171,7 +184,7 @@ export class QlikService extends DbService {
     async syncUserProperties(authHeader: string = '', data) {
         const url = `${this.getUrl()}/user/sync`;
         try {
-            const response = await axios.default.post(url, data, {
+            const response = await this.axiosInstance.post(url, data, {
                 headers: {
                     Authorization: authHeader,
                     'x-api-key': this.apiKey,
@@ -191,7 +204,7 @@ export class QlikService extends DbService {
     ) {
         const url = `${this.getUrl()}/user/deallocate?simulate=${simulate}`;
         try {
-            const response = await axios.default.delete(url, {
+            const response = await this.axiosInstance.delete(url, {
                 data,
                 headers: {
                     Authorization: authHeader,
@@ -211,7 +224,7 @@ export class QlikService extends DbService {
     async removeUser(authHeader: string = '', data: QlikUserActionRequest) {
         const url = `${this.getUrl()}/user`;
         try {
-            const response = await axios.default.delete(url, {
+            const response = await this.axiosInstance.delete(url, {
                 data,
                 headers: {
                     Authorization: authHeader,
@@ -230,15 +243,22 @@ export class QlikService extends DbService {
         data: QlikActionRequest
     ): Promise<QlikQesUser> {
         const url = `${this.getUrl()}/user/${sessionId}`;
+        console.log('[QlikService.getUserBySessionId] Request:', JSON.stringify({
+            url,
+            sessionId,
+            data,
+        }));
         try {
-            const response = await axios.default.post<QlikQesUser>(url, data, {
+            const response = await this.axiosInstance.post<QlikQesUser>(url, data, {
                 headers: {
                     'x-api-key': this.apiKey,
                 },
             });
 
+            console.log('[QlikService.getUserBySessionId] Response:', JSON.stringify(response.data));
             return response.data;
         } catch (e) {
+            console.log('[QlikService.getUserBySessionId] Error:', e.message, e.response?.status, JSON.stringify(e.response?.data));
             this.parseError('QlikService@getUserBySessionId', e.response.data);
         }
     }
@@ -256,7 +276,7 @@ export class QlikService extends DbService {
 
         const url = `${this.getUrl()}/user/list/${qsAppGuid}`;
         try {
-            const response = await axios.default.post<QlikQesUser[]>(
+            const response = await this.axiosInstance.post<QlikQesUser[]>(
                 url,
                 data,
                 {
@@ -279,7 +299,7 @@ export class QlikService extends DbService {
     ): Promise<QlikUser[]> {
         const url = `${this.getUrl()}/user/full/list/${qsAppGuid}`;
         try {
-            const response = await axios.default.post<QlikUser[]>(url, data, {
+            const response = await this.axiosInstance.post<QlikUser[]>(url, data, {
                 headers: {
                     'x-api-key': this.apiKey,
                 },
@@ -297,7 +317,7 @@ export class QlikService extends DbService {
     ): Promise<string[]> {
         const url = `${this.getUrl()}/app/filter`;
         try {
-            const response = await axios.default.post<string[]>(url, data, {
+            const response = await this.axiosInstance.post<string[]>(url, data, {
                 params: {
                     filter: encodeURI(filter),
                 },
@@ -318,7 +338,7 @@ export class QlikService extends DbService {
     ): Promise<boolean> {
         const url = `${this.getUrl()}/user/${sessionId}/end`;
         try {
-            const response = await axios.default.post<any>(url, data, {
+            const response = await this.axiosInstance.post<any>(url, data, {
                 headers: {
                     'x-api-key': this.apiKey,
                 },
@@ -339,7 +359,7 @@ export class QlikService extends DbService {
     ): Promise<boolean> {
         const url = `${this.getUrl()}/user/${sessionId}/is-active`;
         try {
-            const response = await axios.default.post<any>(url, data, {
+            const response = await this.axiosInstance.post<any>(url, data, {
                 headers: {
                     'x-api-key': this.apiKey,
                 },

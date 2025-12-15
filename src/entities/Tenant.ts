@@ -3,7 +3,8 @@ export interface Tenant {
     id: string;
     name: string;
     host: string;
-    port?: number;
+    port?: number;      // QRS port (default: 4242)
+    qpsPort?: number;   // QPS port (default: 4243)
     customers: Customer[];
     authType: QlikAuthType;
     idProvider?: IdProvider;
