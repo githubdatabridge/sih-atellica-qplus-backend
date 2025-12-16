@@ -2,8 +2,6 @@ import { singleton } from 'tsyringe';
 import knex, { Knex } from 'knex';
 import { ConfigService, ENV_PARAMS } from './ConfigService';
 import { attachPaginate } from 'knex-paginate';
-import internal = require('stream');
-import * as path from 'path';
 import config from '../database/knexfile';
 
 attachPaginate();
@@ -66,7 +64,7 @@ export class KnexService {
                 .transaction((trx) => {
                     res(trx);
                 })
-                .catch((e) => {});
+                .catch((_e) => {});
         });
     }
 

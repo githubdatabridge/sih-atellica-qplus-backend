@@ -1,9 +1,9 @@
 import * as Joi from 'joi';
 
 const arrayOfObjects = Joi.array()
-.items(Joi.object().optional().label('SelectionObjectSchema'))
-.empty(undefined)
-.label('SelectionObjectArraySchema');
+    .items(Joi.object().optional().label('SelectionObjectSchema'))
+    .empty(undefined)
+    .label('SelectionObjectArraySchema');
 
 const qlikState = Joi.object({
     id: Joi.number().optional(),

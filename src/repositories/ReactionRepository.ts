@@ -21,7 +21,7 @@ export class ReactionRepository extends BaseRepository<Reaction> {
         return reaction;
     }
 
-    async findAll(where: Reaction, include?: string[]): Promise<Reaction[]> {
+    async findAll(where: Reaction, _include?: string[]): Promise<Reaction[]> {
         return await super.findAll(where, ['qlik_state']);
     }
 
@@ -41,13 +41,13 @@ export class ReactionRepository extends BaseRepository<Reaction> {
     }
 
     async getAllWhereByQsUserId(data: Reaction) {
-        let reactions = await this.getAll(data);
+        const reactions = await this.getAll(data);
 
         const groupedData = _.groupBy(reactions.data, (x) => x.appUserId);
 
         const res: { appUserId: string; reactions: Reaction[] }[] = [];
 
-        for (let key in groupedData) {
+        for (const key in groupedData) {
             if (groupedData.hasOwnProperty(key)) {
                 res.push({
                     appUserId: key,
@@ -251,7 +251,7 @@ export class ReactionRepository extends BaseRepository<Reaction> {
         commentId: number,
         score: string
     ) {
-        let reactions = [];
+        const reactions = [];
         const query =
             'SELECT CONCAT_WS(' +
             `','` +
@@ -275,7 +275,7 @@ export class ReactionRepository extends BaseRepository<Reaction> {
 
         const data = await this.knexService
             .get()
-            .raw(query, {scope, commentId, score} );
+            .raw(query, { scope, commentId, score });
 
         const sentiments: any[] = [
             ...new Set(data.map((reaction) => reaction.sentiment)),
@@ -291,7 +291,7 @@ export class ReactionRepository extends BaseRepository<Reaction> {
             );
 
             const userReactions = filteredReactions.map(
-                ({ sentiment, ...rest }) => rest
+                ({ sentiment: _sentiment, ...rest }) => rest
             );
 
             reactions.push({

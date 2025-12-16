@@ -23,4 +23,3 @@ export async function down(knex: Knex): Promise<void> {
         .update({ qlikId: null })
         .where({ qlikId: 'NONE' });
 }
-

@@ -1,4 +1,4 @@
-import { autoInjectable, singleton } from 'tsyringe';
+import { singleton } from 'tsyringe';
 import { loggers, format, transports, transport } from 'winston';
 import DailyRotateFile = require('winston-daily-rotate-file');
 import { ConfigService } from './ConfigService';
@@ -44,7 +44,10 @@ export class LogService {
             }),
         ];
 
-        if (process.platform === 'win32' && process.env.NODE_ENV === 'production') {
+        if (
+            process.platform === 'win32' &&
+            process.env.NODE_ENV === 'production'
+        ) {
             const WinstonWinEventLogger =
                 require('../lib/log/winston-win-event-logger').WinstonWinEventLogger;
             transportsToEnable.push(

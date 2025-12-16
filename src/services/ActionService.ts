@@ -1,7 +1,7 @@
 import { Transaction } from 'knex/lib';
 import { injectable } from 'tsyringe';
 import { ReportService } from '.';
-import { Action, ActionKind, ActionType, CommentType } from '../entities';
+import { Action, ActionKind, ActionType } from '../entities';
 import { QlikAuthData } from '../lib/qlik-auth';
 import { ActionRepository } from '../repositories';
 import { CommentService } from './CommentService';
@@ -23,7 +23,7 @@ export class ActionService {
         appUserIds: string[],
         trx?: Transaction
     ): Promise<Action[]> {
-        let data: Action[] = [];
+        const data: Action[] = [];
         appUserIds.forEach((id) =>
             data.push({
                 appUserId: id,
@@ -44,7 +44,7 @@ export class ActionService {
         reportId: number,
         trx?: Transaction
     ): Promise<Action[]> {
-        let data: Action[] = [];
+        const data: Action[] = [];
 
         appUserIds.forEach((id) =>
             data.push({
@@ -85,7 +85,7 @@ export class ActionService {
         actionType: ActionType,
         trx?: Transaction
     ): Promise<Action[]> {
-        let data: Action[] = appUserIds.map((appUserId) => {
+        const data: Action[] = appUserIds.map((appUserId) => {
             const action = {
                 appUserId,
                 customerId: userData.customerId,

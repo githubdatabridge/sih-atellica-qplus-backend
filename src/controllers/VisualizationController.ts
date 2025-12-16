@@ -1,4 +1,4 @@
-import { get, controller, options, post, route, put } from 'hapi-decorators';
+import { get, controller, options, post, route } from 'hapi-decorators';
 
 import { BaseController } from './BaseController';
 import { Request, ResponseToolkit } from '@hapi/hapi';

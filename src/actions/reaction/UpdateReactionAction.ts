@@ -44,11 +44,11 @@ export class UpdateReactionAction extends BaseAction<Reaction> {
         }
 
         if (data.qlikState) {
-
-            const newQlikState = this.qlikStateService.handleTextFields(data.qlikState);
-            const qlikState = await this.qlikStateRepository.create(
-                newQlikState
+            const newQlikState = this.qlikStateService.handleTextFields(
+                data.qlikState
             );
+            const qlikState =
+                await this.qlikStateRepository.create(newQlikState);
 
             if (!qlikState) {
                 throw new Errors.InternalError('qlikState creation failed', {

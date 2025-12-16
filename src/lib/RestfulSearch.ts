@@ -32,7 +32,8 @@ export class RestfulSearch {
         const where = [];
 
         props.forEach((prop) => {
-            for (let [operator, value] of Object.entries(search[prop])) {
+            for (const [operator, rawValue] of Object.entries(search[prop])) {
+                let value = rawValue;
                 if (operator === 'like') {
                     value = `%${value}%`;
                 }
@@ -70,7 +71,7 @@ export class RestfulSearch {
             if (!prop.includes(',')) {
                 continue;
             }
-            var adds = prop.split(',').map((x) => x.trim());
+            const adds = prop.split(',').map((x) => x.trim());
             adds.forEach((a) => {
                 search[`${a}`] = search[prop];
             });
@@ -87,7 +88,7 @@ export class RestfulSearch {
 
         this.defs = {};
 
-        for (let def in defs) {
+        for (const def in defs) {
             if (!defs.hasOwnProperty(def)) {
                 continue;
             }

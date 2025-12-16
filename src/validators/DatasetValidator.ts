@@ -26,7 +26,10 @@ const ChartTypeItem = Joi.object({
     properties: Joi.object()
         .when('isBaseChart', {
             is: false,
-            then: Joi.object().required().not({}).label('ChartTypePropertiesSchema'),
+            then: Joi.object()
+                .required()
+                .not({})
+                .label('ChartTypePropertiesSchema'),
         })
         .optional()
         .label('ChartTypePropertiesSchema'),

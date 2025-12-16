@@ -16,7 +16,10 @@ export async function down(knex: Knex): Promise<void> {
     return await knex.schema.dropTableIfExists(tableName);
 }
 
-export async function commonColumns(table: Knex.CreateTableBuilder,knex: Knex) {
+export async function commonColumns(
+    table: Knex.CreateTableBuilder,
+    knex: Knex
+) {
     table
         .timestamp('createdAt', { useTz: false })
         .defaultTo(knex.fn.now())
@@ -27,4 +30,3 @@ export async function commonColumns(table: Knex.CreateTableBuilder,knex: Knex) {
         .notNullable();
     table.timestamp('deletedAt', { useTz: false }).nullable();
 }
-

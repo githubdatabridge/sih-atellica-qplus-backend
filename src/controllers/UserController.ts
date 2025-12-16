@@ -1,7 +1,6 @@
 import { controller, get, options } from 'hapi-decorators';
 import { Request, ResponseToolkit } from '@hapi/hapi';
 import { autoInjectable } from 'tsyringe';
-import Joi = require('joi');
 import { BaseController } from './BaseController';
 import * as Errors from '../lib/errors';
 import { QlikAuthData } from '../lib/qlik-auth';
@@ -34,7 +33,7 @@ export class UserController extends BaseController {
     })
     @get('/')
     @Errors.handleError
-    async notify(request: Request, h: ResponseToolkit) {
+    async notify(request: Request, _h: ResponseToolkit) {
         const userData = request.auth.credentials.userData as QlikAuthData;
 
         const provider = this.providerFactory.create(userData.tenantId);

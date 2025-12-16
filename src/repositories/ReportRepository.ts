@@ -21,7 +21,7 @@ export class ReportRepository extends BaseRepository<Report> {
         reportId: number,
         skipAppUserIds?: string[]
     ): Promise<string[]> {
-        let query = this.kS
+        const query = this.kS
             .get()
             .select(
                 'r.appUserId as r_appUserId',
@@ -168,9 +168,9 @@ export class ReportRepository extends BaseRepository<Report> {
             query = this.search(query, searchWithPrefix);
         }
 
-        let responseData: RepositoryResponse<Report[]> = {};
+        const responseData: RepositoryResponse<Report[]> = {};
 
-        let data = query.paginate((pagination || {}) as any);
+        const data = query.paginate((pagination || {}) as any);
 
         responseData.pagination = (await data).pagination;
         responseData.data = (await data).data;
@@ -213,7 +213,7 @@ export class ReportRepository extends BaseRepository<Report> {
             query.transacting(trx);
         }
 
-        var result = await query.update(data).whereIn('id', ids);
+        const _result = await query.update(data).whereIn('id', ids);
     }
 
     async findAllInFieldWhere(

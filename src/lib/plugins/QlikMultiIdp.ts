@@ -6,7 +6,12 @@ import { Errors } from '..';
 import { Tenant } from '../../entities';
 import { TenantRepository } from '../../repositories';
 import { QlikStrategies } from '../strategies';
-import { AxiosInstanceType, axiosClassicInstance, axiosInstance, jwtTokenDecode } from '../util';
+import {
+    AxiosInstanceType,
+    axiosClassicInstance,
+    axiosInstance,
+    jwtTokenDecode,
+} from '../util';
 
 const QlikMultiIdp: Plugin<any> = {
     name: 'QlikMultiIdp',
@@ -246,15 +251,16 @@ function getQlikOauthProviderConfig(tenant: Tenant) {
         token: `https://${tenant.host}/oauth/token`,
         scope: ['user_default'],
         profile: async function (credentials, params, get) {
-
             const client = axiosClassicInstance(credentials.token);
-            var response = await client.get<any>(`https://${tenant.host}/api/v1/users/me`);
+            const response = await client.get<any>(
+                `https://${tenant.host}/api/v1/users/me`
+            );
 
-            if(response.status !== 200){
+            if (response.status !== 200) {
                 throw new Error('Error getting user profile.');
             }
 
-            const profile = response.data
+            const profile = response.data;
 
             credentials.profile = {
                 sub: profile.subject,

@@ -148,7 +148,7 @@ export class BookmarkController extends BaseController {
     })
     @route('get', '/')
     @Errors.handleError
-    async getAll(request: Request, h: ResponseToolkit) {
+    async getAll(request: Request, _h: ResponseToolkit) {
         const userData = request.auth.credentials.userData as QlikAuthData;
 
         const restfulService = this.restfulServiceFactory.create();
@@ -237,7 +237,7 @@ export class BookmarkController extends BaseController {
         const userData = request.auth.credentials.userData as QlikAuthData;
         const id = parseInt(request.params.id);
 
-        let result = await this.getBookmarkByIdAction.run(userData, id);
+        const result = await this.getBookmarkByIdAction.run(userData, id);
 
         return transformBookmark(result);
     }

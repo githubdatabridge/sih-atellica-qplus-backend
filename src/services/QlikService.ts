@@ -243,22 +243,37 @@ export class QlikService extends DbService {
         data: QlikActionRequest
     ): Promise<QlikQesUser> {
         const url = `${this.getUrl()}/user/${sessionId}`;
-        console.log('[QlikService.getUserBySessionId] Request:', JSON.stringify({
-            url,
-            sessionId,
-            data,
-        }));
+        console.log(
+            '[QlikService.getUserBySessionId] Request:',
+            JSON.stringify({
+                url,
+                sessionId,
+                data,
+            })
+        );
         try {
-            const response = await this.axiosInstance.post<QlikQesUser>(url, data, {
-                headers: {
-                    'x-api-key': this.apiKey,
-                },
-            });
+            const response = await this.axiosInstance.post<QlikQesUser>(
+                url,
+                data,
+                {
+                    headers: {
+                        'x-api-key': this.apiKey,
+                    },
+                }
+            );
 
-            console.log('[QlikService.getUserBySessionId] Response:', JSON.stringify(response.data));
+            console.log(
+                '[QlikService.getUserBySessionId] Response:',
+                JSON.stringify(response.data)
+            );
             return response.data;
         } catch (e) {
-            console.log('[QlikService.getUserBySessionId] Error:', e.message, e.response?.status, JSON.stringify(e.response?.data));
+            console.log(
+                '[QlikService.getUserBySessionId] Error:',
+                e.message,
+                e.response?.status,
+                JSON.stringify(e.response?.data)
+            );
             this.parseError('QlikService@getUserBySessionId', e.response.data);
         }
     }
@@ -299,11 +314,15 @@ export class QlikService extends DbService {
     ): Promise<QlikUser[]> {
         const url = `${this.getUrl()}/user/full/list/${qsAppGuid}`;
         try {
-            const response = await this.axiosInstance.post<QlikUser[]>(url, data, {
-                headers: {
-                    'x-api-key': this.apiKey,
-                },
-            });
+            const response = await this.axiosInstance.post<QlikUser[]>(
+                url,
+                data,
+                {
+                    headers: {
+                        'x-api-key': this.apiKey,
+                    },
+                }
+            );
 
             return response.data;
         } catch (e) {
@@ -317,14 +336,18 @@ export class QlikService extends DbService {
     ): Promise<string[]> {
         const url = `${this.getUrl()}/app/filter`;
         try {
-            const response = await this.axiosInstance.post<string[]>(url, data, {
-                params: {
-                    filter: encodeURI(filter),
-                },
-                headers: {
-                    'x-api-key': this.apiKey,
-                },
-            });
+            const response = await this.axiosInstance.post<string[]>(
+                url,
+                data,
+                {
+                    params: {
+                        filter: encodeURI(filter),
+                    },
+                    headers: {
+                        'x-api-key': this.apiKey,
+                    },
+                }
+            );
 
             return response.data;
         } catch (e) {

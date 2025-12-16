@@ -142,12 +142,12 @@ export class CreateCommentAction extends BaseAction<Comment> {
             );
         }
 
-        let qlikState:QlikState
+        let qlikState: QlikState;
         if (data.qlikState) {
-            const newQlikState = this.qlikStateService.handleTextFields(data.qlikState);
-            qlikState = await this.qlikStateRepository.create(
-                newQlikState
+            const newQlikState = this.qlikStateService.handleTextFields(
+                data.qlikState
             );
+            qlikState = await this.qlikStateRepository.create(newQlikState);
 
             if (!qlikState) {
                 throw new Errors.InternalError('qlikState creation failed', {
@@ -173,11 +173,10 @@ export class CreateCommentAction extends BaseAction<Comment> {
         result.visualization = visualization;
         result.report = report;
         result.user = userData.user;
-        
-        if(qlikState){
-            result.qlikState = qlikState
+
+        if (qlikState) {
+            result.qlikState = qlikState;
         }
-       
 
         this.notifyService.defineHandlers(
             [

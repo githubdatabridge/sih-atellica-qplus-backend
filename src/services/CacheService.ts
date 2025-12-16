@@ -1,7 +1,7 @@
 import { singleton } from 'tsyringe';
 import { Engine } from '@hapi/catbox-memory';
 import { Client, CacheKey } from '@hapi/catbox';
-import { QlikQesUser, QlikUser } from '../entities';
+import { QlikQesUser } from '../entities';
 
 export abstract class CacheService<T> {
     private client: Client<T[]>;
@@ -30,9 +30,9 @@ export abstract class CacheService<T> {
         }
 
         const key = this.key(id);
-        var result = await this.client.get(key);
-        if(!result){
-            return null
+        const result = await this.client.get(key);
+        if (!result) {
+            return null;
         }
         return result.item;
     }

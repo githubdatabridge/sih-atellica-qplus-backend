@@ -1,4 +1,4 @@
-import { NotificationType, Report } from '.';
+import { Report } from '.';
 import { AppUser } from './AppUser';
 import { BaseEntity } from './BaseEntity';
 import { Comment } from './Comment';

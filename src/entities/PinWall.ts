@@ -20,6 +20,6 @@ export interface PinWallContent {
             height?: number;
             x?: number;
             y?: number;
-        }
+        },
     ];
 }

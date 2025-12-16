@@ -45,9 +45,7 @@ export class GetUsersWithClaimOnBookmarkAction extends BaseAction<AppUser[]> {
         }
 
         const result = await this.userService.getUsersInfo(
-            appUserIdsWhoCanSeeBookmark.filter(
-                (x) => x !== bookmark.appUserId
-            ),
+            appUserIdsWhoCanSeeBookmark.filter((x) => x !== bookmark.appUserId),
             userData
         );
 

@@ -5,7 +5,7 @@ import {
     PaginationParams,
     RepositoryResponse,
 } from './BaseRepository';
-import { Action, CommentType } from '../entities';
+import { Action } from '../entities';
 import { CommentRepository } from './CommentRepository';
 
 @injectable()
@@ -116,9 +116,9 @@ export class ActionRepository extends BaseRepository<Action> {
             query = this.filter(query, filterWithPrefix);
         }
 
-        let responseData: RepositoryResponse<Action[]> = {};
+        const responseData: RepositoryResponse<Action[]> = {};
 
-        let data = query.paginate((pagination || {}) as any);
+        const data = query.paginate((pagination || {}) as any);
 
         responseData.pagination = (await data).pagination;
         responseData.data = (await data).data;
@@ -235,9 +235,9 @@ export class ActionRepository extends BaseRepository<Action> {
             query = this.filter(query, filterWithPrefix);
         }
 
-        let responseData: RepositoryResponse<Action[]> = {};
+        const responseData: RepositoryResponse<Action[]> = {};
 
-        let data = query.paginate((pagination || {}) as any);
+        const data = query.paginate((pagination || {}) as any);
 
         responseData.pagination = (await data).pagination;
         responseData.data = (await data).data;

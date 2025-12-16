@@ -24,7 +24,7 @@ function checkIfUserIsAdmin(userData: QlikAuthData, scopes?: string[]) {
     }
 
     const isAdmin = userData.activeRole === 'admin';
-    
+
     if (scopes && scopes.length) {
         return scopes.some((s) => userData.scopes.includes(s)) && isAdmin;
     }
@@ -73,7 +73,7 @@ const ExtractCookieStateFromHeaders = (headers: any): any => {
 };
 
 const uniqueById = (entities: Report[]): Report[] => {
-    let unique = [];
+    const unique = [];
     entities.forEach((e) => {
         if (!unique.some((u) => u.id === e.id)) {
             unique.push({ ...e });
@@ -130,7 +130,7 @@ const axiosInstance = (apiKey: string, type: AxiosInstanceType) => {
     }
 };
 
-const axiosClassicInstance = (accessToken: String) => {
+const axiosClassicInstance = (accessToken: string) => {
     return axios.default.create({
         headers: { Authorization: `Bearer ${accessToken}` },
         //60 sec timeout
@@ -165,8 +165,8 @@ const jwtTokenDecode = <T>(token: string) => {
     } else {
         throw new Error('Invalid jwt token.');
     }
-    var base64Payload = tokenParts[partIndex];
-    var payload = Buffer.from(base64Payload, 'base64');
+    const base64Payload = tokenParts[partIndex];
+    const payload = Buffer.from(base64Payload, 'base64');
     const result = JSON.parse(payload.toString()) as T;
     return result;
 };

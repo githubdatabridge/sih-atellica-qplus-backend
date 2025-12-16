@@ -10,7 +10,7 @@ import { QlikAuthData } from '../../lib/qlik-auth';
 export class CreateBookmarkAction extends BaseAction<Bookmark> {
     constructor(
         private bookmarkRepository?: BookmarkRepository,
-        private bookmarkService?: BookmarkService,
+        private bookmarkService?: BookmarkService
     ) {
         super();
     }
@@ -18,9 +18,7 @@ export class CreateBookmarkAction extends BaseAction<Bookmark> {
     async run(data: Bookmark, userData: QlikAuthData): Promise<Bookmark> {
         this.privatePublicValidation(data, userData);
 
-        data.isPublic = data.bookmarkItems.some(
-            (b) => b.qlikState.selections
-        );
+        data.isPublic = data.bookmarkItems.some((b) => b.qlikState.selections);
 
         data.appUserId = userData.user.appUserId;
         data.customerId = userData.customerId;
@@ -54,8 +52,7 @@ export class CreateBookmarkAction extends BaseAction<Bookmark> {
             );
         }
 
-
-        const result = await this.bookmarkService.create(data,userData);
+        const result = await this.bookmarkService.create(data, userData);
         return result;
     }
 
@@ -64,9 +61,7 @@ export class CreateBookmarkAction extends BaseAction<Bookmark> {
             (x) => x.qlikState.qsBookmarkId
         );
 
-        const isPublic = data.bookmarkItems.some(
-            (b) => b.qlikState.selections
-        );
+        const isPublic = data.bookmarkItems.some((b) => b.qlikState.selections);
 
         if (isPrivate && isPublic) {
             throw new Errors.ValidationError(

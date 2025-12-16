@@ -78,7 +78,7 @@ export class DeleteReportAction extends BaseAction<void> {
             }
 
             await this.userReportRepository.deleteWhere({ reportId: id }, trx);
-            await this.reportRepository.deleteWhere({ id }), trx;
+            (await this.reportRepository.deleteWhere({ id }), trx);
 
             await trx.commit();
 

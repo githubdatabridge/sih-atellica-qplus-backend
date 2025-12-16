@@ -1,4 +1,3 @@
-import { BaseEntity } from './BaseEntity';
 import { QlikBaseRequest, QlikInfo, QlikUserInfo } from './QlikBaseEntities';
 
 // export interface QlikApp extends BaseEntity {

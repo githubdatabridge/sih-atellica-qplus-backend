@@ -16,11 +16,9 @@ const transformBookmark = (data: Bookmark): Bookmark => {
         bookmarkItems: data.bookmarkItems.map((x) => transformBookmarkItem(x)),
     };
 
-    if(data.path)
-        result.path = data.path
+    if (data.path) result.path = data.path;
 
-    if(data.meta)
-        result.meta = data.meta 
+    if (data.meta) result.meta = data.meta;
 
     return result;
 };
@@ -29,7 +27,7 @@ const transformBookmarkItem = (data: BookmarkItem): BookmarkItem => {
     const result: BookmarkItem = {
         id: data.id,
         qlikAppId: data.qlikAppId,
-        bookmarkId:data.bookmarkId,
+        bookmarkId: data.bookmarkId,
         qlikState: transformQlikState(data.qlikState),
         qlikStateId: data.qlikStateId,
         createdAt: data.createdAt,

@@ -6,9 +6,7 @@ import { injectable } from 'tsyringe';
 
 @injectable()
 export class NotifyOnBookmarkService extends NotifyService {
-    constructor(
-        private actionService?: ActionService,
-    ) {
+    constructor(private actionService?: ActionService) {
         super();
     }
 
@@ -70,7 +68,10 @@ const ComposeNotificationForShared = (
     };
 };
 
-const ComposeDataForNotify = (userData: QlikAuthData, bookmark: Bookmark): any => {
+const ComposeDataForNotify = (
+    userData: QlikAuthData,
+    bookmark: Bookmark
+): any => {
     return {
         initials: userData.user.name[0],
         firstName: userData.user.name,

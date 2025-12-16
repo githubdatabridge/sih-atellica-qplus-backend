@@ -26,7 +26,7 @@ export class AppUserPreferencesRepository extends BaseRepository<AppUserPreferen
     }
 
     async create(data: AppUserPreferences, trx?: Transaction) {
-        let d = await super.create(data, trx);
+        const d = await super.create(data, trx);
 
         return this.appUserPreferencesService.fixTypes(d);
     }

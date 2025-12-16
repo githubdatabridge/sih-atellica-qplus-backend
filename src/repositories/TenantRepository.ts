@@ -80,17 +80,19 @@ export class TenantRepository {
         customerId: string,
         appId: string
     ): MashupApp {
-        var tenant = this.getAll().find((x) => x.id === tenantId);
+        const tenant = this.getAll().find((x) => x.id === tenantId);
         if (!tenant || !tenant.customers || !tenant.customers[0]) {
             return;
         }
 
-        var customer = tenant.customers.find((x) => x.id === customerId);
+        const customer = tenant.customers.find((x) => x.id === customerId);
         if (!customer || !customer.apps || !customer.apps[0]) {
             return;
         }
 
-        var app = customer.apps.find((x) => x.id === appId || x.name === appId);
+        const app = customer.apps.find(
+            (x) => x.id === appId || x.name === appId
+        );
         if (!app) {
             return;
         }

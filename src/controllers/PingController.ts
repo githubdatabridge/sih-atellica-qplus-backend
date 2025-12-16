@@ -7,9 +7,6 @@ import { PongService } from '../services';
 
 import * as PingValidator from '../validators/PingValidator';
 import * as Errors from '../lib/errors';
-import Joi = require('joi');
-import { headerValidator } from '../validators/HeaderValidator';
-import { QlikStrategies } from '../lib/strategies';
 
 @autoInjectable()
 @controller('/ping')
@@ -51,7 +48,7 @@ export class PingController extends BaseController {
     })
     @get('/')
     @Errors.handleError
-    ping(request: Request) {
+    ping(_request: Request) {
         return {
             ping: this.pongService.pong(),
         };

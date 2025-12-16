@@ -6,13 +6,13 @@ interface Dictionary<T> {
     [Key: string]: T;
 }
 type DatasetWithReports = Dataset & { reports: Report[] };
-type SeedData = {apps: Dictionary<string>, datasets: DatasetWithReports[]}
+type SeedData = { apps: Dictionary<string>; datasets: DatasetWithReports[] };
 
 export async function syncDatasetsAndReports(
     trx: Knex.Transaction<any, any[]>,
     datasets: (Dataset & { reports: Report[] })[]
 ) {
-    await trx.schema.alterTable("reports", (table) => {
+    await trx.schema.alterTable('reports', (table) => {
         table.integer('templateId').nullable().alter();
     });
     await trx('datasets')

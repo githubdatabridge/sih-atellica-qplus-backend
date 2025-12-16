@@ -7,9 +7,7 @@ import { BookmarkService } from '../../services/BookmarkService';
 
 @injectable()
 export class GetBookmarkByIdAction extends BaseAction<Bookmark> {
-    constructor(
-        private bookmarkService?: BookmarkService
-    ) {
+    constructor(private bookmarkService?: BookmarkService) {
         super();
     }
 

@@ -8,7 +8,7 @@ export interface Bookmark extends BaseEntity {
     customerId?: string;
     appId?: string;
     isPublic?: boolean;
-    meta?:any
+    meta?: any;
     user?: AppUser;
     appUserId?: string;
     path?: string;

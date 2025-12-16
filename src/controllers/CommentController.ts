@@ -17,7 +17,6 @@ import { transformComment } from '../transformers/comments/CommentTransformer';
 import { GetAllCommentsAction } from '../actions/comments/GetAllCommentsAction';
 import { headerValidator } from '../validators/HeaderValidator';
 import { GetCommentByIdAction } from '../actions/comments/GetCommentByIdAction';
-import { ReportService } from '../services';
 import { QlikAuthData } from '../lib/qlik-auth';
 import { QlikStrategies } from '../lib/strategies';
 
@@ -606,7 +605,9 @@ export class CommentController extends BaseController {
             schema: Joi.object({
                 count: Joi.number().label('CommentCountNumber'),
                 selectionHashes: Joi.array()
-                    .items(Joi.number().allow(null).label('SelectionHashNumber'))
+                    .items(
+                        Joi.number().allow(null).label('SelectionHashNumber')
+                    )
                     .label('SelectionHashesArraySchema'),
             }).label('CommentCountResponse'),
         },
@@ -670,7 +671,7 @@ export class CommentController extends BaseController {
             selectionHashes.push(comment.qlikState.qsSelectionHash);
             count += 1;
 
-            comment.comments.forEach((cc) => {
+            comment.comments.forEach((_cc) => {
                 selectionHashes.push(comment.qlikState.qsSelectionHash);
                 count += 1;
             });
@@ -689,7 +690,9 @@ export class CommentController extends BaseController {
             schema: Joi.object({
                 count: Joi.number().label('CommentCountNumber'),
                 selectionHashes: Joi.array()
-                    .items(Joi.number().allow(null).label('SelectionHashNumber'))
+                    .items(
+                        Joi.number().allow(null).label('SelectionHashNumber')
+                    )
                     .label('SelectionHashesArraySchema'),
             }).label('CommentCountResponse'),
         },
@@ -780,7 +783,7 @@ export class CommentController extends BaseController {
             );
             count += 1;
 
-            comment.comments.forEach((cc) => {
+            comment.comments.forEach((_cc) => {
                 selectionHashes.push(
                     comment.qlikState ? comment.qlikState.qsSelectionHash : null
                 );

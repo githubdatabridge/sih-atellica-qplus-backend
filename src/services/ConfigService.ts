@@ -42,9 +42,9 @@ export enum ENV_PARAMS {
     QLIK_CLOUD_INCLUDE_ACCESS_TOKEN = 'QLIK_CLOUD_INCLUDE_ACCESS_TOKEN',
     DEFAULT_ROLES = 'DEFAULT_ROLES',
     DEFAULT_SCOPES = 'DEFAULT_SCOPES',
-    SERVER_CERT_PATH = "SERVER_CERT_PATH",
-    SERVER_CERT_FILE_NAME = "SERVER_CERT_FILE_NAME",
-    SERVER_KEY_FILE_NAME = "SERVER_KEY_FILE_NAME"
+    SERVER_CERT_PATH = 'SERVER_CERT_PATH',
+    SERVER_CERT_FILE_NAME = 'SERVER_CERT_FILE_NAME',
+    SERVER_KEY_FILE_NAME = 'SERVER_KEY_FILE_NAME',
 }
 @injectable()
 export class ConfigService {
@@ -135,15 +135,15 @@ export class ConfigService {
             return result.split(',');
         }
 
-        let boolResult = !isBool
+        const boolResult = !isBool
             ? result
             : typeof result === 'boolean'
-            ? result
-            : result === 'false'
-            ? false
-            : result === 'true'
-            ? true
-            : null;
+              ? result
+              : result === 'false'
+                ? false
+                : result === 'true'
+                  ? true
+                  : null;
 
         if (isBool && boolResult === null)
             throw new Error(`Invalid boolean value for ${value} in .env file`);

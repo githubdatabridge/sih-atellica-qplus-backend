@@ -1,23 +1,21 @@
 import * as jwt from '@hapi/jwt';
 import { getTokenCertificates } from '../server-certificates';
 
-
 const generateJwtToken = (payload: JwtPayload, options: JwtSigningOptions) => {
     const key = getTokenCertificates().key;
-    const JWT_ID = payload.JWT_ID
-    const notBefore = payload.notBefore
-    
-    delete payload.JWT_ID
-    delete payload.notBefore
+    const JWT_ID = payload.JWT_ID;
+    const notBefore = payload.notBefore;
+
+    delete payload.JWT_ID;
+    delete payload.notBefore;
 
     const result = jwt.token.generate(
         {
             ...payload,
             aud: options.audience,
-            iss: options.issuer,  
+            iss: options.issuer,
             jti: JWT_ID,
             nbf: notBefore,
-
         },
         {
             key: key,

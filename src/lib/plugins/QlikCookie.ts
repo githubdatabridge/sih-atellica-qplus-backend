@@ -17,13 +17,20 @@ const QlikCookie: Plugin<any> = {
                     h: ResponseToolkit
                 ) {
                     try {
-                        console.log('[QlikCookie] Auth request headers:', JSON.stringify({
-                            'x-tenant-id': request.headers['x-tenant-id'],
-                            'x-customer-id': request.headers['x-customer-id'],
-                            'x-app-id': request.headers['x-app-id'],
-                            'x-vp': request.headers['x-vp'],
-                        }));
-                        console.log('[QlikCookie] Auth request cookies:', JSON.stringify(request.state));
+                        console.log(
+                            '[QlikCookie] Auth request headers:',
+                            JSON.stringify({
+                                'x-tenant-id': request.headers['x-tenant-id'],
+                                'x-customer-id':
+                                    request.headers['x-customer-id'],
+                                'x-app-id': request.headers['x-app-id'],
+                                'x-vp': request.headers['x-vp'],
+                            })
+                        );
+                        console.log(
+                            '[QlikCookie] Auth request cookies:',
+                            JSON.stringify(request.state)
+                        );
 
                         await headerValidator.validateAsync(request.headers);
 

@@ -16,7 +16,7 @@ const visualizationTypes = [
 ];
 
 function getDefaults(visualizationTypes) {
-    var result = [];
+    const result = [];
     visualizationTypes.forEach((element) => {
         result.push({
             name: element,
@@ -27,7 +27,7 @@ function getDefaults(visualizationTypes) {
 }
 
 export async function up(knex: Knex): Promise<void> {
-    var defaultValue = JSON.stringify(getDefaults(visualizationTypes));
+    const defaultValue = JSON.stringify(getDefaults(visualizationTypes));
     return await knex.schema.alterTable(tableName, (table) => {
         table.text('visualizations').notNullable().defaultTo(defaultValue);
     });
@@ -38,4 +38,3 @@ export async function down(knex: Knex): Promise<void> {
         table.dropColumn('visualizations');
     });
 }
-

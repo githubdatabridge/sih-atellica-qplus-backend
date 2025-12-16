@@ -49,7 +49,7 @@ export class QsaasAuthProvider extends BaseQAuthProvider {
 
         const mappedRoles = this.roleMapperService.map(spaceRoles);
 
-        let userData: QlikAuthData = {
+        const userData: QlikAuthData = {
             qlikUser: qlikUser,
             user: {
                 appUserId: result.userId,
@@ -78,7 +78,7 @@ export class QsaasAuthProvider extends BaseQAuthProvider {
     ) {
         const config = await this.getConfig(tenant);
 
-        let owner = (await this.qlikSaasService.getSpaceOwner(
+        const owner = (await this.qlikSaasService.getSpaceOwner(
             spaceId,
             config
         )) as QsaasUserLight;
@@ -105,7 +105,8 @@ export class QsaasAuthProvider extends BaseQAuthProvider {
     }
 
     private async getConfig(tenant: Tenant) {
-        const apiKey = tenant.apiKey?.value ||
+        const apiKey =
+            tenant.apiKey?.value ||
             (await this.tokenProvider.getAccessToken(
                 'https://' + tenant.host,
                 tenant.idProvider.clientId,

@@ -40,7 +40,9 @@ export class QlikController extends BaseController {
                 returnTo: Joi.string().optional().label('ReturnToUrlString'),
                 tenantId: Joi.string().optional().label('TenantIdString'),
                 customerId: Joi.string().optional().label('CustomerIdString'),
-                mashupAppName: Joi.string().optional().label('MashupAppNameString'),
+                mashupAppName: Joi.string()
+                    .optional()
+                    .label('MashupAppNameString'),
                 code: Joi.string().optional().label('AuthCodeString'),
                 state: Joi.string().optional().label('AuthStateString'),
             })
@@ -176,8 +178,8 @@ export class QlikController extends BaseController {
         const {
             authProviderType,
             tenantId,
-            customerId,
-            appId,
+            customerId: _customerId,
+            appId: _appId,
             sessionId,
             vp,
             callbackUrl,

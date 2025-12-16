@@ -5,7 +5,6 @@ import { autoInjectable } from 'tsyringe';
 import * as AppUserValidator from '../validators/AppUserValidator';
 import { AuthQlikAction } from '../actions/qlik/AuthQlikAction';
 import * as Errors from '../lib/errors';
-import Joi = require('joi');
 import { headerValidator } from '../validators/HeaderValidator';
 import { transformMe } from '../transformers/me/meTransformer';
 import { QlikAuthData } from '../lib/qlik-auth';

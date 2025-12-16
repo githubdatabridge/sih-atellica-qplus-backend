@@ -514,7 +514,7 @@ export class ReportController extends BaseController {
     })
     @route('get', '/{id}/share')
     @Errors.handleError
-    async getUsersFromSharedReport(request: Request, h: ResponseToolkit) {
+    async getUsersFromSharedReport(request: Request, _h: ResponseToolkit) {
         const userData = request.auth.credentials.userData as QlikAuthData;
 
         const id = parseInt(request.params.id);
@@ -665,7 +665,10 @@ export class ReportController extends BaseController {
                 id: Joi.number().required(),
             }).label('IdParams'),
             query: Joi.object({
-                includeMe: Joi.bool().optional().default(true).label('IncludeMeBoolParam'),
+                includeMe: Joi.bool()
+                    .optional()
+                    .default(true)
+                    .label('IncludeMeBoolParam'),
             }).label('IncludeMeQueryParams'),
             headers: headerValidator,
         },
@@ -694,7 +697,7 @@ export class ReportController extends BaseController {
     })
     @route('get', '/{id}/users')
     @Errors.handleError
-    async getUsersWhichCanSeeReport(request: Request, h: ResponseToolkit) {
+    async getUsersWhichCanSeeReport(request: Request, _h: ResponseToolkit) {
         const userData = request.auth.credentials.userData as QlikAuthData;
 
         const id = parseInt(request.params.id);

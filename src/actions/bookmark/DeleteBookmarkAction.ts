@@ -9,7 +9,7 @@ import { BookmarkService } from '../../services';
 export class DeleteBookmarkAction extends BaseAction<void> {
     constructor(
         private bookmarkRepository: BookmarkRepository,
-        private bookmarkService?: BookmarkService,
+        private bookmarkService?: BookmarkService
     ) {
         super();
     }

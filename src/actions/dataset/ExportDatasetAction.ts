@@ -1,6 +1,10 @@
 import { autoInjectable } from 'tsyringe';
 import { BaseAction } from '../BaseAction';
-import { DatasetRepository, ReportRepository, TenantRepository } from '../../repositories';
+import {
+    DatasetRepository,
+    ReportRepository,
+    TenantRepository,
+} from '../../repositories';
 import { FileModel } from '../../dtos';
 import { QlikAuthData } from '../../lib/qlik-auth';
 import { Errors } from '../../lib';
@@ -23,7 +27,7 @@ export class ExportDatasetAction extends BaseAction<FileModel> {
         const data = [...response];
 
         datasets.forEach((ds) => {
-            var exists = response.find((x) => x.id === ds.id);
+            const exists = response.find((x) => x.id === ds.id);
             if (!exists) {
                 data.push({ ...ds, reports: [] });
             }
@@ -31,8 +35,8 @@ export class ExportDatasetAction extends BaseAction<FileModel> {
 
         const app = await this.getAppFromUserData(userData);
 
-        const apps = {}
-        app.qlikApps.forEach((x) => apps[x.name] = x.id);
+        const apps = {};
+        app.qlikApps.forEach((x) => (apps[x.name] = x.id));
 
         const result = {
             apps,
@@ -45,8 +49,8 @@ export class ExportDatasetAction extends BaseAction<FileModel> {
     generateJsonFile = (
         response: any
     ): { data: Buffer; fileName: string; contentType: string } => {
-        var json = JSON.stringify(response);
-        var buffer = Buffer.from(json, 'utf-8');
+        const json = JSON.stringify(response);
+        const buffer = Buffer.from(json, 'utf-8');
         return {
             data: buffer,
             fileName: `datasets.json_${new Date().toISOString()}`,
@@ -64,7 +68,9 @@ export class ExportDatasetAction extends BaseAction<FileModel> {
         if (!tenant) {
             throw new Errors.InternalError('Tenant not found', {});
         }
-        const customer = tenant.customers.find((x) => x.id === userData.customerId);
+        const customer = tenant.customers.find(
+            (x) => x.id === userData.customerId
+        );
         if (!customer) {
             throw new Errors.InternalError('Customer not found', {});
         }

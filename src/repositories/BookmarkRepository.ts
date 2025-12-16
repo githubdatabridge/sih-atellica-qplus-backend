@@ -77,9 +77,9 @@ export class BookmarkRepository extends BaseRepository<Bookmark> {
             query = this.search(query, searchWithPrefix);
         }
 
-        let responseData: RepositoryResponse<Bookmark[]> = {};
+        const responseData: RepositoryResponse<Bookmark[]> = {};
 
-        let data = query.paginate((pagination || {}) as any);
+        const data = query.paginate((pagination || {}) as any);
 
         responseData.pagination = (await data).pagination;
         responseData.data = (await data).data;
@@ -98,7 +98,7 @@ export class BookmarkRepository extends BaseRepository<Bookmark> {
         bookmarkId: number,
         skipAppUserIds?: string[]
     ): Promise<string[]> {
-        let query = this.kS
+        const query = this.kS
             .get()
             .select(
                 'b.appUserId as b_appUserId',

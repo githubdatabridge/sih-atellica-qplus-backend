@@ -1,5 +1,8 @@
 import * as Joi from 'joi';
-import { baseResponseValidator, restfulOperatorsValidator } from './BaseResponseValidator';
+import {
+    baseResponseValidator,
+    restfulOperatorsValidator,
+} from './BaseResponseValidator';
 import * as DatasetValidator from './DatasetValidator';
 import * as QlikStateValidator from './QlikStateValidator';
 import * as AppUserValidator from './AppUserValidator';
@@ -9,8 +12,7 @@ const createRequest = Joi.object({
     title: Joi.string().required(),
     description: Joi.string().optional(),
     isFavourite: Joi.boolean().optional().default(false),
-    visualizationType: Joi.string()
-        .required(),
+    visualizationType: Joi.string().required(),
     isPinwallable: Joi.boolean().required(),
     datasetId: Joi.number().positive().required(),
     qlikState: QlikStateValidator.qlikStateCreate
@@ -25,8 +27,7 @@ const updateRequest = Joi.object({
     title: Joi.string().required(),
     description: Joi.string().optional(),
     isFavourite: Joi.boolean().required(),
-    visualizationType: Joi.string()
-        .required(),
+    visualizationType: Joi.string().required(),
     isPinwallable: Joi.boolean().required(),
     datasetId: Joi.number().positive().required(),
     qlikState: QlikStateValidator.qlikStateCreate
@@ -38,8 +39,7 @@ const patchRequest = Joi.object({
     content: Joi.object().optional().label('ReportContentSchema'),
     title: Joi.string().optional(),
     description: Joi.string().optional(),
-    visualizationType: Joi.string()
-        .optional(),
+    visualizationType: Joi.string().optional(),
     isPinwallable: Joi.boolean().optional(),
     isFavourite: Joi.boolean().optional(),
     datasetId: Joi.number().positive().optional(),
@@ -58,8 +58,7 @@ const reportBase = Joi.object({
     title: Joi.string().required(),
     description: Joi.string().optional().allow(null),
     tenantId: Joi.string().required(),
-    visualizationType: Joi.string()
-        .required(),
+    visualizationType: Joi.string().required(),
     appId: Joi.string().required(),
     customerId: Joi.string().required(),
     isSystem: Joi.boolean().required(),
@@ -107,7 +106,7 @@ const reports = baseResponseValidator
             .required()
             .empty()
             .label('ReportsMultipleResponse'),
-        operators: restfulOperatorsValidator, 
+        operators: restfulOperatorsValidator,
     })
     .label('ReportsBaseResponse');
 

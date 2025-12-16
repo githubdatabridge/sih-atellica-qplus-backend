@@ -1,6 +1,6 @@
 import { Knex } from 'knex';
 
-let tables = [
+const tables = [
     'pinwalls',
     'comments',
     'reactions',
@@ -68,4 +68,3 @@ export async function down(knex: Knex): Promise<void> {
         table.dropColumn('customerId');
     });
 }
-

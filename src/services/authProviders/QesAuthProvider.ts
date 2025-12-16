@@ -29,7 +29,7 @@ export class QesAuthProvider extends BaseQAuthProvider {
 
     async getUserFullList(userData: QlikAuthData): Promise<QlikUser[]> {
         try {
-            let appName = userData.appId;
+            const appName = userData.appId;
             const tenant = this.tenantRepository
                 .getAll()
                 .find((x) => x.id === userData.tenantId);
@@ -57,7 +57,7 @@ export class QesAuthProvider extends BaseQAuthProvider {
                 });
             }
             const result = qlikUsers.map((qlikeUser) => {
-                let withProp: QlikQesUser = {
+                const withProp: QlikQesUser = {
                     ...qlikeUser,
                     ...this.getEmailData(qlikeUser, appName),
                 };
@@ -88,16 +88,19 @@ export class QesAuthProvider extends BaseQAuthProvider {
 
         const qlikSessionId = state[`${qlikSessionHeader}-${vp}`];
 
-        console.log('[QesAuthProvider.ensureQlikUser] Input:', JSON.stringify({
-            qlikSessionHeader,
-            vp,
-            cookieName: `${qlikSessionHeader}-${vp}`,
-            qlikSessionId,
-            qlikAppName,
-            tenantHost: tenant.host,
-            tenantPort: tenant.port,
-            qsInfo: this.getQsInfo(tenant, vp),
-        }));
+        console.log(
+            '[QesAuthProvider.ensureQlikUser] Input:',
+            JSON.stringify({
+                qlikSessionHeader,
+                vp,
+                cookieName: `${qlikSessionHeader}-${vp}`,
+                qlikSessionId,
+                qlikAppName,
+                tenantHost: tenant.host,
+                tenantPort: tenant.port,
+                qsInfo: this.getQsInfo(tenant, vp),
+            })
+        );
 
         // Fail fast if session cookie is missing
         if (!qlikSessionId) {
@@ -115,14 +118,19 @@ export class QesAuthProvider extends BaseQAuthProvider {
         }
 
         try {
-            console.log('[QesAuthProvider] Step 1: Getting Qlik apps by filter...');
+            console.log(
+                '[QesAuthProvider] Step 1: Getting Qlik apps by filter...'
+            );
             const qlikAppIds = await this.qlikService.getAppsByFilter(
                 `((publishTime ne '1753-01-01T00:00:00.000Z') and tags.name so '${qlikAppName}')`,
                 {
                     qsInfo: this.getQsInfo(tenant, vp),
                 }
             );
-            console.log('[QesAuthProvider] Step 1 complete. Found apps:', JSON.stringify(qlikAppIds));
+            console.log(
+                '[QesAuthProvider] Step 1 complete. Found apps:',
+                JSON.stringify(qlikAppIds)
+            );
 
             if (!qlikAppIds || !qlikAppIds.length) {
                 throw new Errors.InternalError('No Qlik Apps Found', {
@@ -142,22 +150,34 @@ export class QesAuthProvider extends BaseQAuthProvider {
                 );
             }
 
-            console.log('[QesAuthProvider] Step 2: Getting user by session ID:', qlikSessionId);
+            console.log(
+                '[QesAuthProvider] Step 2: Getting user by session ID:',
+                qlikSessionId
+            );
             const qlikUser: QlikQesUser = await this.getUserBySessionId(
                 qlikSessionId,
                 app.id,
                 vp,
                 tenant
             );
-            console.log('[QesAuthProvider] Step 2 complete. User:', JSON.stringify(qlikUser));
+            console.log(
+                '[QesAuthProvider] Step 2 complete. User:',
+                JSON.stringify(qlikUser)
+            );
 
-            console.log('[QesAuthProvider] Step 3: Getting user list for app:', qlikAppIds[0]);
+            console.log(
+                '[QesAuthProvider] Step 3: Getting user list for app:',
+                qlikAppIds[0]
+            );
             const appUserList: QlikQesUser[] = await this._getUserList(
                 qlikAppIds[0],
                 vp,
                 tenant
             );
-            console.log('[QesAuthProvider] Step 3 complete. User count:', appUserList?.length);
+            console.log(
+                '[QesAuthProvider] Step 3 complete. User count:',
+                appUserList?.length
+            );
 
             const foundUser = appUserList.find((u) => u.id === qlikUser.id);
 
@@ -195,7 +215,12 @@ export class QesAuthProvider extends BaseQAuthProvider {
 
             return userData;
         } catch (e) {
-            console.error('[QesAuthProvider] ERROR:', e.message, e.name, JSON.stringify(e.customData || {}));
+            console.error(
+                '[QesAuthProvider] ERROR:',
+                e.message,
+                e.name,
+                JSON.stringify(e.customData || {})
+            );
             throw new Errors.Unauthorized('Unauthorized', {
                 qlikSessionId,
                 qlikAppName,
@@ -246,8 +271,16 @@ export class QesAuthProvider extends BaseQAuthProvider {
     }
 
     private getAuthorizationData(qlikUser: QlikQesUser, appName: string) {
-        let roles = this.configService.get(ENV_PARAMS.DEFAULT_ROLES, false, true) as string[],
-            scopes = this.configService.get(ENV_PARAMS.DEFAULT_SCOPES, false, true) as string[],
+        let roles = this.configService.get(
+                ENV_PARAMS.DEFAULT_ROLES,
+                false,
+                true
+            ) as string[],
+            scopes = this.configService.get(
+                ENV_PARAMS.DEFAULT_SCOPES,
+                false,
+                true
+            ) as string[],
             email = '';
 
         const rolesName = `${appName}_role`;
@@ -366,7 +399,7 @@ export class QesAuthProvider extends BaseQAuthProvider {
 
         const info = this.getQsInfo(tenant, vp);
 
-        var result = await this.qlikService.endUserSession(qlikSessionId, {
+        const result = await this.qlikService.endUserSession(qlikSessionId, {
             qsInfo: info,
         });
 

@@ -154,7 +154,7 @@ export class ReportService {
         reports: Report[],
         users: AppUser[]
     ): Promise<Report[]> {
-        let result: Report[] = [];
+        const result: Report[] = [];
         const sharedReportIds = await this.GetSharedByAppUserIds(
             userData.user.appUserId
         );

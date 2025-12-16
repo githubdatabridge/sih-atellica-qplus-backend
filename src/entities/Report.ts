@@ -25,7 +25,6 @@ export interface Report extends BaseEntity, UserMetadata {
 }
 
 export enum VisualizationType {
-
     Table = 'table',
     PivotTable = 'pivot-table',
     BarChart = 'barchart',
@@ -34,7 +33,7 @@ export enum VisualizationType {
     ComboChart = 'combochart',
     ScatterPlot = 'scatterplot',
     Map = 'map',
-    DistributionPlot = 'distributionplot',  
+    DistributionPlot = 'distributionplot',
     TreeMap = 'treemap',
     Kpi = 'kpi',
 }

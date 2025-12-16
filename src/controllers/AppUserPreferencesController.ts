@@ -1,11 +1,10 @@
-import { controller, options, put, route, get } from 'hapi-decorators';
+import { controller, options, put, get } from 'hapi-decorators';
 
 import { BaseController } from './BaseController';
 import { Request } from '@hapi/hapi';
 import { autoInjectable } from 'tsyringe';
 import { AppUserPreferencesRepository } from '../repositories';
 import * as AppUserPreferencesValidator from '../validators/AppUserPreferencesValidator';
-import Joi = require('joi');
 import { AppUserPreferencesService } from '../services';
 import { AppUserPreferences } from '../entities';
 import * as Errors from '../lib/errors';

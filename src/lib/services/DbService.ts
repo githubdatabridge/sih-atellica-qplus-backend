@@ -1,7 +1,10 @@
 import * as Errors from '../../lib/errors';
 
 export class DbService {
-    constructor(protected host: string, protected port?: number) {}
+    constructor(
+        protected host: string,
+        protected port?: number
+    ) {}
 
     protected getUrl() {
         //[FIX]

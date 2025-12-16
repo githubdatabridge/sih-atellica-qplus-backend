@@ -1,4 +1,4 @@
-import { injectable, singleton } from 'tsyringe';
+import { singleton } from 'tsyringe';
 import { ConfigService } from '.';
 
 const ROLE_DIVIDE = ';';
@@ -36,7 +36,7 @@ export class RoleMapperService {
     private getMapper(
         configService: ConfigService
     ): { from: string; to: string }[] {
-        var roleMapper = configService.get('ROLES_MAPPER');
+        const roleMapper = configService.get('ROLES_MAPPER');
         if (!roleMapper) {
             throw new Error('ROLES_MAPPER not defined in .env file.');
         }

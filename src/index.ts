@@ -151,7 +151,7 @@ const routeConfiguration = {
 const isSsl = configService.get('SSL', true);
 
 const init = async () => {
-    const cfg:Hapi.ServerOptions = isSsl
+    const cfg: Hapi.ServerOptions = isSsl
         ? {
               ...hostConfiguration,
               tls: {

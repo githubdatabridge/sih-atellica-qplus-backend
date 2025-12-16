@@ -118,7 +118,7 @@ export class BookmarkService {
             const bookmark_items = data.bookmarkItems;
             delete data.bookmarkItems;
 
-            let result = await this.bookmarkRepository.create(data, trx);
+            const result = await this.bookmarkRepository.create(data, trx);
 
             bookmark_items.forEach((x) => {
                 x.bookmarkId = result.id;
@@ -203,7 +203,7 @@ export class BookmarkService {
 
         const forUpdate = bookmark_items.filter((x) => x.id !== undefined);
         const forCreate = bookmark_items.filter((x) => x.id === undefined);
-        const forDelete = existing.filter((x) => !forUpdate.some((s) => s.id));
+        const forDelete = existing.filter((_x) => !forUpdate.some((s) => s.id));
 
         const updated = await this._updateMany(userData, forUpdate, trx);
 

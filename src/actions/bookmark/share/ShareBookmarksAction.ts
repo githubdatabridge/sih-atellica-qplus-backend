@@ -55,7 +55,7 @@ export class ShareBookmarksAction extends BaseAction<AppUser[]> {
             });
         }
 
-        const isBookmarkSharable = bookmark.isPublic
+        const isBookmarkSharable = bookmark.isPublic;
 
         if (!isBookmarkSharable) {
             throw new Errors.ValidationError('Bookmark is private.', {

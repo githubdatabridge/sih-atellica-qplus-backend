@@ -1,4 +1,4 @@
-import { get, controller, options, post, route, put } from 'hapi-decorators';
+import { get, controller, options, route, put } from 'hapi-decorators';
 
 import { BaseController } from './BaseController';
 import { Request, ResponseToolkit } from '@hapi/hapi';
@@ -104,7 +104,7 @@ export class ActionController extends BaseController {
         const page = parseInt(request.query.page as any);
         const perPage = parseInt(request.query.perPage as any);
 
-        const type: CommentType = CommentType.Visualization;
+        const _type: CommentType = CommentType.Visualization;
 
         const pagination = {
             currentPage: page,
@@ -198,7 +198,7 @@ export class ActionController extends BaseController {
         const page = parseInt(request.query.page as any);
         const perPage = parseInt(request.query.perPage as any);
 
-        const type: CommentType = CommentType.Report;
+        const _type: CommentType = CommentType.Report;
 
         const pagination = {
             currentPage: page,
@@ -295,7 +295,7 @@ export class ActionController extends BaseController {
         const page = parseInt(request.query.page as any);
         const perPage = parseInt(request.query.perPage as any);
 
-        const type: CommentType = CommentType.Report;
+        const _type: CommentType = CommentType.Report;
 
         const pagination = {
             currentPage: page,

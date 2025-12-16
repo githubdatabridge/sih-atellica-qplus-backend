@@ -8,7 +8,11 @@ import {
 } from '../../repositories';
 import { Reaction } from '../../entities';
 import * as Errors from '../../lib/errors';
-import { NotifyOnReactionService, QlikStateService, UserService } from '../../services';
+import {
+    NotifyOnReactionService,
+    QlikStateService,
+    UserService,
+} from '../../services';
 import { QlikAuthData } from '../../lib/qlik-auth';
 import { AssignUser } from '../../lib/util';
 
@@ -138,10 +142,11 @@ export class CreateReactionAction extends BaseAction<Reaction> {
         }
 
         if (data.qlikState) {
-            const newQlikState = this.qlikStateService.handleTextFields(data.qlikState);
-            const qlikState = await this.qlikStateRepository.create(
-                newQlikState
+            const newQlikState = this.qlikStateService.handleTextFields(
+                data.qlikState
             );
+            const qlikState =
+                await this.qlikStateRepository.create(newQlikState);
 
             if (!qlikState) {
                 throw new Errors.InternalError('QlikState creation failed', {

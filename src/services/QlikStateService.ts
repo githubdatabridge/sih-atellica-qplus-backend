@@ -6,7 +6,9 @@ import { handleTextFields } from '../lib/util';
 export class QlikStateService {
     constructor() {}
     handleTextFields(data: QlikState) {
-        data.selections = data.selections ? handleTextFields(data.selections) : undefined;
+        data.selections = data.selections
+            ? handleTextFields(data.selections)
+            : undefined;
         return data;
     }
 }

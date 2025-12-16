@@ -26,7 +26,10 @@ export interface RepositoryResponse<T = any> {
 }
 
 export class BaseRepository<T> {
-    constructor(protected kS: KnexService, protected tableName: string) {}
+    constructor(
+        protected kS: KnexService,
+        protected tableName: string
+    ) {}
 
     public get(tableName?: string) {
         if (!tableName) {
@@ -254,7 +257,7 @@ export class BaseRepository<T> {
     }
 
     protected search(query: QueryBuilder, where, trx?: Transaction) {
-        let q: QueryBuilder = trx ? query.transacting(trx) : query;
+        const q: QueryBuilder = trx ? query.transacting(trx) : query;
         if (where && Array.isArray(where)) {
             q.where((builder) => {
                 where.forEach((w) => {
@@ -343,9 +346,9 @@ export class BaseRepository<T> {
             query = this.search(query, search, trx);
         }
 
-        let responseData: RepositoryResponse<T[]> = {};
+        const responseData: RepositoryResponse<T[]> = {};
 
-        let data = (await trx)
+        const data = (await trx)
             ? query.transacting(trx).paginate((pagination || {}) as any)
             : query.paginate((pagination || {}) as any);
 
@@ -457,7 +460,7 @@ export class BaseRepository<T> {
         }
         const props = Object.keys(where);
 
-        var result = {};
+        const result = {};
 
         props.forEach((prop) => {
             const newProp = prefix ? prefix + '.' + prop : prop;

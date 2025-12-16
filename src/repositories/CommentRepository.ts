@@ -36,7 +36,7 @@ export class CommentRepository extends BaseRepository<Comment> {
         include?: string[],
         filter?: string[][],
         pagination?: PaginationParams,
-        orderBy?: string[]
+        _orderBy?: string[]
     ): Promise<RepositoryResponse<Comment[]>> {
         const comments = await super.getAll(
             where,
@@ -136,9 +136,9 @@ export class CommentRepository extends BaseRepository<Comment> {
             query = this.filter(query, filterWithPrefix);
         }
 
-        let responseData: RepositoryResponse<Comment[]> = {};
+        const responseData: RepositoryResponse<Comment[]> = {};
 
-        let data = query.paginate((pagination || {}) as any);
+        const data = query.paginate((pagination || {}) as any);
 
         responseData.pagination = (await data).pagination;
         responseData.data = (await data).data;

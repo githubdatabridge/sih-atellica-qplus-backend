@@ -26,7 +26,7 @@ export class DatasetService {
         userData: QlikAuthData,
         excludes: number[] = []
     ) {
-        let result = await this.datasetRepository.getAll({
+        const result = await this.datasetRepository.getAll({
             title,
             appId: userData.appId,
             tenantId: userData.tenantId,

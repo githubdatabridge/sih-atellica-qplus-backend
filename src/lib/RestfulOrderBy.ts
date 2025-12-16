@@ -18,8 +18,8 @@ export class RestfulOrderBy {
         const props = Object.keys(orderBy);
 
         props.forEach((prop) => {
-            for (let [operator, value] of Object.entries(orderBy[prop])) {
-                operator = checkOperator(operator, this.orderByField);
+            for (const [rawOperator, _value] of Object.entries(orderBy[prop])) {
+                const operator = checkOperator(rawOperator, this.orderByField);
                 if (
                     this.defs &&
                     Array.isArray(this.defs) &&

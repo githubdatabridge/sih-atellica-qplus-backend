@@ -57,14 +57,12 @@ export class CreatePinWallAction extends BaseAction<PinWall> {
         let qlikStates = [];
 
         if (qlikStateData && qlikStateData.length) {
-
-            const newQlikStates = qlikStateData.map(x=>{
+            const newQlikStates = qlikStateData.map((x) => {
                 return this.qlikStateService.handleTextFields(x);
-            })
+            });
 
-            qlikStates = await this.qlikStateRepository.createMany(
-                newQlikStates
-            );
+            qlikStates =
+                await this.qlikStateRepository.createMany(newQlikStates);
             qlikStateIds = qlikStates.map((item) => item.id);
 
             qlikStateIds.forEach((qlikStateId) => {

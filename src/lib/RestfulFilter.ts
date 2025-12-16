@@ -33,7 +33,8 @@ export class RestfulFilter {
         const where = [];
 
         props.forEach((prop) => {
-            for (let [operator, value] of Object.entries(filter[prop])) {
+            for (const [operator, rawValue] of Object.entries(filter[prop])) {
+                let value = rawValue;
                 if (operator === 'like') {
                     value = `%${value}%`;
                 }
@@ -66,7 +67,7 @@ export class RestfulFilter {
 
         this.defs = {};
 
-        for (let def in defs) {
+        for (const def in defs) {
             if (!defs.hasOwnProperty(def)) {
                 continue;
             }

@@ -16,13 +16,11 @@ export class UpdateBookmarkAction extends BaseAction<Bookmark> {
     }
 
     async run(data: Bookmark, userData: QlikAuthData): Promise<Bookmark> {
-        const result = await this.bookmarkRepository.getAll(
-            {
-                tenantId: userData.tenantId,
-                customerId: userData.customerId,
-                appId: userData.appId,
-            }
-        );
+        const result = await this.bookmarkRepository.getAll({
+            tenantId: userData.tenantId,
+            customerId: userData.customerId,
+            appId: userData.appId,
+        });
 
         if (!result || !result.data || !Array.isArray(result.data)) {
             throw new Errors.InternalError('Failed to retrieve bookmarks.', {

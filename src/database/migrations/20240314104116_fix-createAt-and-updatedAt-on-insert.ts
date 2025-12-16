@@ -1,13 +1,13 @@
-import type { Knex } from "knex";
+import type { Knex } from 'knex';
 const tableNames = [
     'actions',
     'comments',
     'reactions',
     'visualizations',
     'qlik_states',
-    "app_user_preferences",
+    'app_user_preferences',
     'feedbacks',
-    "pinwalls",
+    'pinwalls',
     'pinwall_qlik_states',
     'datasets',
     'reports',
@@ -16,9 +16,8 @@ const tableNames = [
     'tenants',
     'bookmarks',
     'bookmark_items',
-    'users_bookmarks'
+    'users_bookmarks',
 ];
-
 
 export async function up(knex: Knex): Promise<void> {
     for (const tableName of tableNames) {
@@ -37,8 +36,6 @@ export async function up(knex: Knex): Promise<void> {
     }
 }
 
-
 export async function down(knex: Knex): Promise<void> {
     // no need to revert this migration because it's a fix
 }
-

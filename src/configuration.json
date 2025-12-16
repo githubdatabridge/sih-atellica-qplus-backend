@@ -14,11 +14,11 @@
                         "name": "qplus",
                         "qlikApps": [
                             {
-                                "id": "05cf243f-8413-42a2-a173-7f6b94c8a08e",
+                                "id": "4e2d4117-f850-496b-8eb4-df1ff570c961",
                                 "name": "compliance"
                             },
                             {
-                                "id": "ac8fd1a5-8a29-432a-9126-d00dacddbaca",
+                                "id": "96d1506e-4b0e-424b-8b8c-0a2d42c97e69",
                                 "name": "audit"
                             }
                         ],

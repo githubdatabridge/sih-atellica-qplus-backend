@@ -34,7 +34,7 @@ export class PinWallService {
         }
 
         const pinWallsToUpdate = pinwalls.filter((p) => {
-            var result = filterReportVisualizationIds(
+            const result = filterReportVisualizationIds(
                 parseTextFields(p.content) as PinWallContent
             );
             return result ? result.reportIds.includes(reportId) : false;
@@ -63,7 +63,7 @@ export class PinWallService {
         customerId: string,
         tenantId: string,
         appId: string,
-        appUserId: string
+        _appUserId: string
     ) {
         if (!content.cells) {
             return true;
@@ -148,7 +148,7 @@ const filterReportVisualizationIds = (
         return;
     }
 
-    let result: { reportIds: number[]; visualizationIds: string[] } = {
+    const result: { reportIds: number[]; visualizationIds: string[] } = {
         reportIds: [],
         visualizationIds: [],
     };
@@ -178,7 +178,7 @@ const removeReportIdFromContent = (
         return;
     }
 
-    let data = { ...content };
+    const data = { ...content };
 
     data.cells.forEach((cell) => {
         const reportId = cell.reportId;

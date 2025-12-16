@@ -48,7 +48,7 @@ export class DatasetRepository extends BaseRepository<Dataset> {
     }
 
     async GetDatasetsWithTemplateReports() {
-        let query = this.kS
+        const query = this.kS
             .get()
             .select(
                 'd.*',
